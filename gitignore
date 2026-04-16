@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entorno virtual
+venv/
+
+# Variables sensibles
+.env
+
+# Logs
+*.log
+
+# Base de datos
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
