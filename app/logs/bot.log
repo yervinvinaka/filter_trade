@@ -1,0 +1,747 @@
+2026-04-08 03:42:47,498 | INFO | 🚀 Bot iniciado...
+2026-04-08 03:42:47,517 | INFO | 📊 Analizando mercado...
+2026-04-08 03:42:48,084 | INFO | BTCUSDT | RSI: 48.06
+2026-04-08 03:42:48,515 | INFO | ETHUSDT | RSI: 45.89
+2026-04-08 03:42:48,949 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:42:48,958 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:43:41,116 | INFO | 🚀 Bot iniciado...
+2026-04-08 03:43:41,117 | INFO | 📊 Analizando mercado...
+2026-04-08 03:43:41,663 | INFO | BTCUSDT | RSI: 32.4
+2026-04-08 03:43:41,664 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:43:42,501 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:43:42,936 | INFO | ETHUSDT | RSI: 44.42
+2026-04-08 03:43:43,555 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:43:43,563 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:44:43,561 | INFO | 📊 Analizando mercado...
+2026-04-08 03:44:44,156 | INFO | BTCUSDT | RSI: 30.56
+2026-04-08 03:44:44,163 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:44:45,029 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:44:45,663 | INFO | ETHUSDT | RSI: 43.34
+2026-04-08 03:44:46,122 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:44:46,430 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:45:46,511 | INFO | 📊 Analizando mercado...
+2026-04-08 03:45:47,085 | INFO | BTCUSDT | RSI: 31.83
+2026-04-08 03:45:47,087 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:45:47,937 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:45:48,373 | INFO | ETHUSDT | RSI: 55.85
+2026-04-08 03:45:48,962 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:45:48,970 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:46:48,968 | INFO | 📊 Analizando mercado...
+2026-04-08 03:46:49,554 | INFO | BTCUSDT | RSI: 35.86
+2026-04-08 03:46:49,556 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:46:51,010 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:46:51,503 | INFO | ETHUSDT | RSI: 52.71
+2026-04-08 03:46:51,934 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:46:51,937 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:47:51,932 | INFO | 📊 Analizando mercado...
+2026-04-08 03:47:52,456 | INFO | BTCUSDT | RSI: 26.34
+2026-04-08 03:47:52,464 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:47:53,442 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:47:53,883 | INFO | ETHUSDT | RSI: 39.31
+2026-04-08 03:47:53,885 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:47:54,666 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:47:55,102 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:47:55,116 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:48:55,115 | INFO | 📊 Analizando mercado...
+2026-04-08 03:48:55,638 | INFO | BTCUSDT | RSI: 28.71
+2026-04-08 03:48:55,647 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:48:56,478 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:48:56,912 | INFO | ETHUSDT | RSI: 35.28
+2026-04-08 03:48:56,913 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:48:57,811 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:48:58,262 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:48:58,266 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:49:58,261 | INFO | 📊 Analizando mercado...
+2026-04-08 03:49:58,782 | INFO | BTCUSDT | RSI: 20.22
+2026-04-08 03:49:58,841 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:49:59,690 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:50:00,445 | INFO | ETHUSDT | RSI: 31.09
+2026-04-08 03:50:00,448 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:50:01,287 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:50:01,728 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:50:01,734 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:51:01,734 | INFO | 📊 Analizando mercado...
+2026-04-08 03:51:02,318 | INFO | BTCUSDT | RSI: 27.86
+2026-04-08 03:51:02,322 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:51:03,176 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:51:03,629 | INFO | ETHUSDT | RSI: 35.97
+2026-04-08 03:51:03,630 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:51:04,443 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:51:04,880 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:51:04,890 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:52:04,886 | INFO | 📊 Analizando mercado...
+2026-04-08 03:52:05,442 | INFO | BTCUSDT | RSI: 35.08
+2026-04-08 03:52:05,452 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:52:06,266 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:52:06,714 | INFO | ETHUSDT | RSI: 43.35
+2026-04-08 03:52:07,140 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:52:07,155 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:53:07,152 | INFO | 📊 Analizando mercado...
+2026-04-08 03:53:07,694 | INFO | BTCUSDT | RSI: 31.43
+2026-04-08 03:53:07,698 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:53:08,541 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:53:08,990 | INFO | ETHUSDT | RSI: 41.05
+2026-04-08 03:53:09,441 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:53:09,453 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:54:09,451 | INFO | 📊 Analizando mercado...
+2026-04-08 03:54:10,002 | INFO | BTCUSDT | RSI: 37.89
+2026-04-08 03:54:10,004 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:54:10,864 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:54:11,319 | INFO | ETHUSDT | RSI: 39.43
+2026-04-08 03:54:11,320 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:54:12,106 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:54:12,548 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:54:12,555 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:55:12,555 | INFO | 📊 Analizando mercado...
+2026-04-08 03:55:13,333 | INFO | BTCUSDT | RSI: 35.0
+2026-04-08 03:55:13,350 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:55:14,446 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:55:15,106 | INFO | ETHUSDT | RSI: 39.79
+2026-04-08 03:55:15,131 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:55:16,046 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:55:16,494 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:55:16,500 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:56:16,495 | INFO | 📊 Analizando mercado...
+2026-04-08 03:56:17,066 | INFO | BTCUSDT | RSI: 26.28
+2026-04-08 03:56:17,073 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:56:18,027 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:56:18,495 | INFO | ETHUSDT | RSI: 32.45
+2026-04-08 03:56:18,499 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:56:19,458 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:56:20,078 | ERROR | SOLUSDT, LINKUSDT | Error API Binance: 400
+2026-04-08 03:56:20,082 | WARNING | SOLUSDT, LINKUSDT | Datos insuficientes
+2026-04-08 03:58:05,002 | INFO | 🚀 Bot iniciado...
+2026-04-08 03:58:05,002 | INFO | 📊 Analizando mercado...
+2026-04-08 03:58:05,618 | INFO | BTCUSDT | RSI: 29.0
+2026-04-08 03:58:05,621 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:58:06,489 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:58:06,970 | INFO | ETHUSDT | RSI: 32.3
+2026-04-08 03:58:06,974 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:58:07,884 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:58:08,324 | INFO | SOLUSDT | RSI: 39.29
+2026-04-08 03:58:08,329 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:58:09,133 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:58:09,638 | INFO | LINKUSDT | RSI: 50.0
+2026-04-08 03:59:09,637 | INFO | 📊 Analizando mercado...
+2026-04-08 03:59:10,324 | INFO | BTCUSDT | RSI: 29.74
+2026-04-08 03:59:10,327 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-08 03:59:11,234 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:59:11,693 | INFO | ETHUSDT | RSI: 32.44
+2026-04-08 03:59:11,694 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:59:12,523 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:59:12,992 | INFO | SOLUSDT | RSI: 37.93
+2026-04-08 03:59:12,994 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 03:59:13,855 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 03:59:14,315 | INFO | LINKUSDT | RSI: 40.0
+2026-04-08 04:01:20,248 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:01:20,249 | INFO | 📊 Analizando mercado...
+2026-04-08 04:01:20,806 | INFO | BTCUSDT | RSI: 50.72
+2026-04-08 04:01:21,256 | INFO | ETHUSDT | RSI: 64.95
+2026-04-08 04:01:21,257 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:01:22,083 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:01:22,540 | INFO | SOLUSDT | RSI: 63.64
+2026-04-08 04:01:22,542 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:01:23,322 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:01:23,793 | INFO | LINKUSDT | RSI: 62.5
+2026-04-08 04:01:23,795 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:01:24,644 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:02:25,362 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:02:25,363 | INFO | 📊 Analizando mercado...
+2026-04-08 04:02:25,932 | INFO | BTCUSDT | RSI: 54.2
+2026-04-08 04:02:26,357 | INFO | ETHUSDT | RSI: 72.34
+2026-04-08 04:02:26,389 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:02:27,240 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:02:27,678 | INFO | SOLUSDT | RSI: 68.42
+2026-04-08 04:02:27,679 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:02:28,499 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:02:28,935 | INFO | LINKUSDT | RSI: 62.5
+2026-04-08 04:02:28,937 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:02:29,780 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:03:29,798 | INFO | 📊 Analizando mercado...
+2026-04-08 04:03:30,441 | INFO | BTCUSDT | RSI: 56.91
+2026-04-08 04:03:30,880 | INFO | ETHUSDT | RSI: 65.4
+2026-04-08 04:03:30,882 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:03:31,719 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:03:32,163 | INFO | SOLUSDT | RSI: 65.0
+2026-04-08 04:03:32,166 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:03:33,030 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:03:33,483 | INFO | LINKUSDT | RSI: 71.43
+2026-04-08 04:03:33,485 | INFO | LINKUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:03:34,310 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:08:58,775 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:08:58,776 | INFO | 📊 Analizando mercado...
+2026-04-08 04:08:59,296 | INFO | BTCUSDT | RSI: 69.12
+2026-04-08 04:08:59,300 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:09:00,088 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:09:00,526 | INFO | ETHUSDT | RSI: 72.08
+2026-04-08 04:09:00,528 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:09:01,338 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:09:01,828 | INFO | SOLUSDT | RSI: 78.57
+2026-04-08 04:09:01,829 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:09:02,647 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:09:03,156 | INFO | LINKUSDT | RSI: 71.43
+2026-04-08 04:09:03,161 | INFO | LINKUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:09:04,000 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:10:03,985 | INFO | 📊 Analizando mercado...
+2026-04-08 04:10:04,685 | INFO | BTCUSDT | RSI: 72.93
+2026-04-08 04:10:04,688 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:10:05,569 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:10:05,997 | INFO | ETHUSDT | RSI: 72.23
+2026-04-08 04:10:06,008 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:10:06,919 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:10:07,551 | INFO | SOLUSDT | RSI: 72.97
+2026-04-08 04:10:07,552 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:10:08,328 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:10:08,915 | INFO | LINKUSDT | RSI: 64.71
+2026-04-08 04:10:08,917 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:10:09,744 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:15:41,203 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:15:41,204 | INFO | 📊 Analizando mercado...
+2026-04-08 04:15:41,754 | INFO | BTCUSDT | RSI: 73.52
+2026-04-08 04:15:41,798 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:15:42,748 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:15:43,195 | INFO | ETHUSDT | RSI: 61.35
+2026-04-08 04:15:43,197 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:15:43,983 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:15:44,426 | INFO | SOLUSDT | RSI: 60.0
+2026-04-08 04:15:44,874 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:16:44,869 | INFO | 📊 Analizando mercado...
+2026-04-08 04:16:45,448 | INFO | BTCUSDT | RSI: 74.57
+2026-04-08 04:16:45,460 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:16:46,278 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:16:47,008 | INFO | ETHUSDT | RSI: 61.89
+2026-04-08 04:16:47,015 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:16:47,795 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:16:48,236 | INFO | SOLUSDT | RSI: 64.29
+2026-04-08 04:16:48,238 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:16:49,031 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:16:49,463 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:17:49,459 | INFO | 📊 Analizando mercado...
+2026-04-08 04:17:50,254 | INFO | BTCUSDT | RSI: 76.76
+2026-04-08 04:17:50,259 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:17:51,129 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:17:51,665 | INFO | ETHUSDT | RSI: 64.35
+2026-04-08 04:17:51,668 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:17:52,563 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:17:53,025 | INFO | SOLUSDT | RSI: 60.44
+2026-04-08 04:17:53,029 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:17:53,835 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:17:54,300 | INFO | LINKUSDT | RSI: 60.0
+2026-04-08 04:17:54,306 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:17:55,248 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:18:55,248 | INFO | 📊 Analizando mercado...
+2026-04-08 04:18:55,879 | INFO | BTCUSDT | RSI: 74.73
+2026-04-08 04:18:55,881 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:18:56,760 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:18:57,200 | INFO | ETHUSDT | RSI: 63.62
+2026-04-08 04:18:57,203 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:18:58,201 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:18:58,656 | INFO | SOLUSDT | RSI: 61.11
+2026-04-08 04:18:58,657 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:18:59,557 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:19:00,120 | INFO | LINKUSDT | RSI: 60.0
+2026-04-08 04:19:00,166 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:19:01,104 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:20:01,112 | INFO | 📊 Analizando mercado...
+2026-04-08 04:20:01,940 | INFO | BTCUSDT | RSI: 57.22
+2026-04-08 04:20:02,696 | INFO | ETHUSDT | RSI: 40.74
+2026-04-08 04:20:03,167 | INFO | SOLUSDT | RSI: 38.46
+2026-04-08 04:20:03,171 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 04:20:04,032 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:20:04,559 | INFO | LINKUSDT | RSI: 42.86
+2026-04-08 04:21:04,554 | INFO | 📊 Analizando mercado...
+2026-04-08 04:21:05,087 | INFO | BTCUSDT | RSI: 56.53
+2026-04-08 04:21:05,611 | INFO | ETHUSDT | RSI: 49.07
+2026-04-08 04:21:06,052 | INFO | SOLUSDT | RSI: 41.51
+2026-04-08 04:21:06,492 | INFO | LINKUSDT | RSI: 50.0
+2026-04-08 04:22:06,548 | INFO | 📊 Analizando mercado...
+2026-04-08 04:22:07,162 | INFO | BTCUSDT | RSI: 64.17
+2026-04-08 04:22:07,165 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:22:08,027 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:22:08,530 | INFO | ETHUSDT | RSI: 45.76
+2026-04-08 04:22:08,970 | INFO | SOLUSDT | RSI: 41.82
+2026-04-08 04:22:09,400 | INFO | LINKUSDT | RSI: 42.86
+2026-04-08 04:23:09,395 | INFO | 📊 Analizando mercado...
+2026-04-08 04:23:09,940 | INFO | BTCUSDT | RSI: 46.32
+2026-04-08 04:23:10,477 | INFO | ETHUSDT | RSI: 43.81
+2026-04-08 04:23:10,889 | INFO | SOLUSDT | RSI: 42.59
+2026-04-08 04:23:11,310 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:24:11,314 | INFO | 📊 Analizando mercado...
+2026-04-08 04:24:11,835 | INFO | BTCUSDT | RSI: 42.43
+2026-04-08 04:24:12,576 | INFO | ETHUSDT | RSI: 35.79
+2026-04-08 04:24:12,577 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-08 04:24:13,414 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:24:13,879 | INFO | SOLUSDT | RSI: 32.65
+2026-04-08 04:24:13,882 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 04:24:14,708 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:24:15,182 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:25:15,177 | INFO | 📊 Analizando mercado...
+2026-04-08 04:25:15,689 | INFO | BTCUSDT | RSI: 44.3
+2026-04-08 04:25:16,130 | INFO | ETHUSDT | RSI: 42.75
+2026-04-08 04:25:16,571 | INFO | SOLUSDT | RSI: 32.65
+2026-04-08 04:25:16,574 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 04:25:17,388 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:25:17,832 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:25:52,803 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:25:52,804 | INFO | 📊 Analizando mercado...
+2026-04-08 04:25:53,318 | INFO | BTCUSDT | RSI: 49.46
+2026-04-08 04:25:53,733 | INFO | ETHUSDT | RSI: 46.45
+2026-04-08 04:25:54,172 | INFO | SOLUSDT | RSI: 35.42
+2026-04-08 04:25:54,174 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-08 04:25:54,981 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:25:55,425 | INFO | LINKUSDT | RSI: 50.0
+2026-04-08 04:26:55,426 | INFO | 📊 Analizando mercado...
+2026-04-08 04:26:55,984 | INFO | BTCUSDT | RSI: 51.49
+2026-04-08 04:26:56,437 | INFO | ETHUSDT | RSI: 48.78
+2026-04-08 04:26:57,021 | INFO | SOLUSDT | RSI: 46.51
+2026-04-08 04:26:57,467 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:27:57,466 | INFO | 📊 Analizando mercado...
+2026-04-08 04:27:58,014 | INFO | BTCUSDT | RSI: 58.82
+2026-04-08 04:27:58,490 | INFO | ETHUSDT | RSI: 53.06
+2026-04-08 04:27:59,302 | INFO | SOLUSDT | RSI: 52.5
+2026-04-08 04:27:59,766 | INFO | LINKUSDT | RSI: 66.67
+2026-04-08 04:27:59,768 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:28:00,607 | ERROR | Error enviando Telegram: {"ok":false,"error_code":404,"description":"Not Found"}
+2026-04-08 04:35:24,834 | INFO | 🚀 Bot iniciado...
+2026-04-08 04:35:24,835 | INFO | 📊 Analizando mercado...
+2026-04-08 04:35:25,399 | INFO | BTCUSDT | RSI: 55.09
+2026-04-08 04:35:25,847 | INFO | ETHUSDT | RSI: 51.12
+2026-04-08 04:35:26,263 | INFO | SOLUSDT | RSI: 44.44
+2026-04-08 04:35:26,684 | INFO | LINKUSDT | RSI: 40.0
+2026-04-08 04:36:26,675 | INFO | 📊 Analizando mercado...
+2026-04-08 04:36:27,236 | INFO | BTCUSDT | RSI: 52.28
+2026-04-08 04:36:27,782 | INFO | ETHUSDT | RSI: 52.12
+2026-04-08 04:36:28,416 | INFO | SOLUSDT | RSI: 47.62
+2026-04-08 04:36:28,846 | INFO | LINKUSDT | RSI: 50.0
+2026-04-08 04:37:28,839 | INFO | 📊 Analizando mercado...
+2026-04-08 04:37:29,418 | INFO | BTCUSDT | RSI: 62.53
+2026-04-08 04:37:29,421 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:37:29,425 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:37:29,883 | INFO | ETHUSDT | RSI: 63.31
+2026-04-08 04:37:29,893 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:37:29,898 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:37:30,367 | INFO | SOLUSDT | RSI: 57.78
+2026-04-08 04:37:30,828 | INFO | LINKUSDT | RSI: 60.0
+2026-04-08 04:38:30,820 | INFO | 📊 Analizando mercado...
+2026-04-08 04:38:31,598 | INFO | BTCUSDT | RSI: 66.0
+2026-04-08 04:38:31,627 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:38:31,660 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:38:32,293 | INFO | ETHUSDT | RSI: 73.37
+2026-04-08 04:38:32,395 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-08 04:38:32,413 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:38:32,910 | INFO | SOLUSDT | RSI: 64.58
+2026-04-08 04:38:32,916 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:38:32,918 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:38:33,353 | INFO | LINKUSDT | RSI: 66.67
+2026-04-08 04:38:33,355 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:38:33,357 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:39:33,349 | INFO | 📊 Analizando mercado...
+2026-04-08 04:39:34,082 | INFO | BTCUSDT | RSI: 65.12
+2026-04-08 04:39:34,085 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:39:34,087 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:39:34,551 | INFO | ETHUSDT | RSI: 66.72
+2026-04-08 04:39:34,567 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:39:34,571 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:39:35,058 | INFO | SOLUSDT | RSI: 55.17
+2026-04-08 04:39:35,506 | INFO | LINKUSDT | RSI: 62.5
+2026-04-08 04:39:35,511 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:39:35,512 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:40:35,506 | INFO | 📊 Analizando mercado...
+2026-04-08 04:40:36,063 | INFO | BTCUSDT | RSI: 68.31
+2026-04-08 04:40:36,068 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:40:36,071 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:40:36,633 | INFO | ETHUSDT | RSI: 69.77
+2026-04-08 04:40:36,680 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:40:36,685 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:40:37,174 | INFO | SOLUSDT | RSI: 57.14
+2026-04-08 04:40:37,655 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:41:37,649 | INFO | 📊 Analizando mercado...
+2026-04-08 04:41:38,403 | INFO | BTCUSDT | RSI: 65.7
+2026-04-08 04:41:38,410 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:41:38,412 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:41:38,893 | INFO | ETHUSDT | RSI: 69.13
+2026-04-08 04:41:38,895 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:41:38,898 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:41:39,335 | INFO | SOLUSDT | RSI: 59.32
+2026-04-08 04:41:39,753 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:42:39,760 | INFO | 📊 Analizando mercado...
+2026-04-08 04:42:40,299 | INFO | BTCUSDT | RSI: 59.32
+2026-04-08 04:42:40,751 | INFO | ETHUSDT | RSI: 61.92
+2026-04-08 04:42:40,754 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:42:40,760 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:42:41,343 | INFO | SOLUSDT | RSI: 57.14
+2026-04-08 04:42:41,846 | INFO | LINKUSDT | RSI: 57.14
+2026-04-08 04:43:41,840 | INFO | 📊 Analizando mercado...
+2026-04-08 04:43:42,490 | INFO | BTCUSDT | RSI: 55.47
+2026-04-08 04:43:42,981 | INFO | ETHUSDT | RSI: 66.71
+2026-04-08 04:43:42,983 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-08 04:43:42,985 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-08 04:43:43,430 | INFO | SOLUSDT | RSI: 54.72
+2026-04-08 04:43:43,877 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:01:22,776 | INFO | 🚀 Bot iniciado...
+2026-04-13 02:01:22,777 | INFO | 📊 Analizando mercado...
+2026-04-13 02:01:23,348 | INFO | BTCUSDT | RSI: 57.37
+2026-04-13 02:01:23,772 | INFO | ETHUSDT | RSI: 48.32
+2026-04-13 02:01:24,199 | INFO | SOLUSDT | RSI: 71.43
+2026-04-13 02:01:24,202 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:01:24,205 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:01:24,637 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:02:24,633 | INFO | 📊 Analizando mercado...
+2026-04-13 02:02:25,714 | INFO | BTCUSDT | RSI: 62.5
+2026-04-13 02:02:25,716 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:02:25,719 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:02:26,162 | INFO | ETHUSDT | RSI: 53.32
+2026-04-13 02:02:26,587 | INFO | SOLUSDT | RSI: 72.97
+2026-04-13 02:02:26,597 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:02:26,598 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:02:27,043 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:03:27,046 | INFO | 📊 Analizando mercado...
+2026-04-13 02:03:27,630 | INFO | BTCUSDT | RSI: 61.07
+2026-04-13 02:03:27,638 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:03:27,639 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:03:28,139 | INFO | ETHUSDT | RSI: 51.61
+2026-04-13 02:03:28,561 | INFO | SOLUSDT | RSI: 71.43
+2026-04-13 02:03:28,568 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:03:28,570 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:03:28,997 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:04:28,995 | INFO | 📊 Analizando mercado...
+2026-04-13 02:04:29,528 | INFO | BTCUSDT | RSI: 50.22
+2026-04-13 02:04:29,954 | INFO | ETHUSDT | RSI: 43.0
+2026-04-13 02:04:30,389 | INFO | SOLUSDT | RSI: 59.46
+2026-04-13 02:04:30,795 | INFO | LINKUSDT | RSI: 50.0
+2026-04-13 02:05:17,146 | INFO | 🚀 Bot iniciado...
+2026-04-13 02:05:17,147 | INFO | 📊 Analizando mercado...
+2026-04-13 02:05:17,730 | INFO | BTCUSDT | RSI: 50.14
+2026-04-13 02:05:18,256 | INFO | ETHUSDT | RSI: 37.53
+2026-04-13 02:05:18,257 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:05:18,260 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:05:18,693 | INFO | SOLUSDT | RSI: 61.11
+2026-04-13 02:05:18,695 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:05:18,696 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:05:19,121 | INFO | LINKUSDT | RSI: 55.56
+2026-04-13 02:06:19,120 | INFO | 📊 Analizando mercado...
+2026-04-13 02:06:19,920 | INFO | BTCUSDT | RSI: 45.43
+2026-04-13 02:06:20,543 | INFO | ETHUSDT | RSI: 39.79
+2026-04-13 02:06:20,647 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:06:20,734 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:06:21,994 | INFO | SOLUSDT | RSI: 53.85
+2026-04-13 02:06:22,455 | INFO | LINKUSDT | RSI: 50.0
+2026-04-13 02:07:22,456 | INFO | 📊 Analizando mercado...
+2026-04-13 02:07:23,016 | INFO | BTCUSDT | RSI: 46.26
+2026-04-13 02:07:23,649 | INFO | ETHUSDT | RSI: 35.94
+2026-04-13 02:07:23,652 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:07:23,654 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:07:24,174 | INFO | SOLUSDT | RSI: 46.67
+2026-04-13 02:07:24,602 | INFO | LINKUSDT | RSI: 44.44
+2026-04-13 02:08:24,594 | INFO | 📊 Analizando mercado...
+2026-04-13 02:08:25,233 | INFO | BTCUSDT | RSI: 56.18
+2026-04-13 02:08:25,711 | INFO | ETHUSDT | RSI: 40.74
+2026-04-13 02:08:26,148 | INFO | SOLUSDT | RSI: 53.85
+2026-04-13 02:08:26,632 | INFO | LINKUSDT | RSI: 50.0
+2026-04-13 02:09:26,638 | INFO | 📊 Analizando mercado...
+2026-04-13 02:09:27,223 | INFO | BTCUSDT | RSI: 51.35
+2026-04-13 02:09:27,662 | INFO | ETHUSDT | RSI: 39.72
+2026-04-13 02:09:27,666 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:09:27,667 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:09:28,101 | INFO | SOLUSDT | RSI: 55.26
+2026-04-13 02:09:28,587 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:10:28,583 | INFO | 📊 Analizando mercado...
+2026-04-13 02:10:29,426 | INFO | BTCUSDT | RSI: 31.36
+2026-04-13 02:10:29,434 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:10:29,438 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:10:29,921 | INFO | ETHUSDT | RSI: 25.79
+2026-04-13 02:10:29,924 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:10:29,929 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:10:30,476 | INFO | SOLUSDT | RSI: 46.87
+2026-04-13 02:10:30,945 | INFO | LINKUSDT | RSI: 55.56
+2026-04-13 02:12:11,682 | INFO | 🚀 Bot iniciado...
+2026-04-13 02:12:11,684 | INFO | 📊 Analizando mercado...
+2026-04-13 02:12:12,241 | INFO | BTCUSDT | RSI: 19.38
+2026-04-13 02:12:12,244 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:12:12,245 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:12:12,673 | INFO | ETHUSDT | RSI: 13.46
+2026-04-13 02:12:12,676 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:12:12,677 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:12:13,117 | INFO | SOLUSDT | RSI: 31.43
+2026-04-13 02:12:13,120 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:12:13,121 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:12:13,592 | INFO | LINKUSDT | RSI: 40.0
+2026-04-13 02:13:13,585 | INFO | 📊 Analizando mercado...
+2026-04-13 02:13:14,134 | INFO | BTCUSDT | RSI: 14.06
+2026-04-13 02:13:14,136 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:13:14,138 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:13:14,586 | INFO | ETHUSDT | RSI: 10.99
+2026-04-13 02:13:14,619 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:13:14,636 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:13:15,119 | INFO | SOLUSDT | RSI: 19.15
+2026-04-13 02:13:15,122 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:13:15,123 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:13:15,591 | INFO | LINKUSDT | RSI: 16.67
+2026-04-13 02:13:15,626 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:13:15,642 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:14:15,684 | INFO | 📊 Analizando mercado...
+2026-04-13 02:14:16,878 | INFO | BTCUSDT | RSI: 18.22
+2026-04-13 02:14:16,897 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:14:16,925 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:14:17,580 | INFO | ETHUSDT | RSI: 22.68
+2026-04-13 02:14:17,697 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:14:17,739 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:14:18,395 | INFO | SOLUSDT | RSI: 16.67
+2026-04-13 02:14:18,469 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:14:18,505 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:14:19,029 | INFO | LINKUSDT | RSI: 28.57
+2026-04-13 02:14:19,033 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:14:19,034 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:15:19,024 | INFO | 📊 Analizando mercado...
+2026-04-13 02:15:19,615 | INFO | BTCUSDT | RSI: 15.91
+2026-04-13 02:15:19,621 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:15:19,625 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:15:20,118 | INFO | ETHUSDT | RSI: 18.53
+2026-04-13 02:15:20,134 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:15:20,139 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:15:20,747 | INFO | SOLUSDT | RSI: 13.64
+2026-04-13 02:15:20,782 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:15:20,792 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:15:21,261 | INFO | LINKUSDT | RSI: 28.57
+2026-04-13 02:15:21,263 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:15:21,265 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:16:21,253 | INFO | 📊 Analizando mercado...
+2026-04-13 02:16:21,930 | INFO | BTCUSDT | RSI: 25.29
+2026-04-13 02:16:21,941 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:16:21,947 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:16:22,431 | INFO | ETHUSDT | RSI: 24.57
+2026-04-13 02:16:22,441 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:16:22,442 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:16:22,891 | INFO | SOLUSDT | RSI: 20.83
+2026-04-13 02:16:22,892 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:16:22,895 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:16:23,361 | INFO | LINKUSDT | RSI: 28.57
+2026-04-13 02:16:23,372 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:16:23,373 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:17:23,369 | INFO | 📊 Analizando mercado...
+2026-04-13 02:17:24,013 | INFO | BTCUSDT | RSI: 25.02
+2026-04-13 02:17:24,066 | INFO | BTCUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:17:24,070 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:17:24,552 | INFO | ETHUSDT | RSI: 24.79
+2026-04-13 02:17:24,555 | INFO | ETHUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:17:24,557 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:17:24,989 | INFO | SOLUSDT | RSI: 15.91
+2026-04-13 02:17:24,992 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:17:24,999 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:17:25,689 | INFO | LINKUSDT | RSI: 28.57
+2026-04-13 02:17:26,052 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:17:26,100 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:18:26,113 | INFO | 📊 Analizando mercado...
+2026-04-13 02:18:26,814 | INFO | BTCUSDT | RSI: 34.88
+2026-04-13 02:18:26,880 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:18:26,942 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:18:27,499 | INFO | ETHUSDT | RSI: 33.48
+2026-04-13 02:18:27,510 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:18:27,511 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:18:27,965 | INFO | SOLUSDT | RSI: 23.91
+2026-04-13 02:18:27,973 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:18:27,975 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:18:28,681 | INFO | LINKUSDT | RSI: 28.57
+2026-04-13 02:18:28,937 | INFO | LINKUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:18:29,084 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:19:29,234 | INFO | 📊 Analizando mercado...
+2026-04-13 02:19:29,842 | INFO | BTCUSDT | RSI: 33.14
+2026-04-13 02:19:29,846 | INFO | BTCUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:19:29,849 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:19:30,270 | INFO | ETHUSDT | RSI: 33.33
+2026-04-13 02:19:30,273 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:19:30,274 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:19:30,720 | INFO | SOLUSDT | RSI: 28.3
+2026-04-13 02:19:30,724 | INFO | SOLUSDT | Señal detectada: BUY_STRONG
+2026-04-13 02:19:30,725 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:19:31,216 | INFO | LINKUSDT | RSI: 37.5
+2026-04-13 02:19:31,218 | INFO | LINKUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:19:31,222 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:20:31,214 | INFO | 📊 Analizando mercado...
+2026-04-13 02:20:34,438 | INFO | BTCUSDT | RSI: 40.04
+2026-04-13 02:20:34,991 | INFO | ETHUSDT | RSI: 38.76
+2026-04-13 02:20:35,018 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:20:35,027 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:20:35,927 | INFO | SOLUSDT | RSI: 35.29
+2026-04-13 02:20:35,992 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:20:36,052 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:20:36,777 | INFO | LINKUSDT | RSI: 33.33
+2026-04-13 02:20:36,804 | INFO | LINKUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:20:36,810 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:21:36,853 | INFO | 📊 Analizando mercado...
+2026-04-13 02:21:38,106 | INFO | BTCUSDT | RSI: 40.03
+2026-04-13 02:21:39,050 | INFO | ETHUSDT | RSI: 39.7
+2026-04-13 02:21:39,163 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:21:39,176 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:21:39,883 | INFO | SOLUSDT | RSI: 38.0
+2026-04-13 02:21:39,892 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:21:39,899 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:21:40,440 | INFO | LINKUSDT | RSI: 37.5
+2026-04-13 02:21:40,446 | INFO | LINKUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:21:40,450 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:22:40,444 | INFO | 📊 Analizando mercado...
+2026-04-13 02:22:40,976 | INFO | BTCUSDT | RSI: 40.76
+2026-04-13 02:22:41,468 | INFO | ETHUSDT | RSI: 39.17
+2026-04-13 02:22:41,471 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:22:41,472 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:22:41,885 | INFO | SOLUSDT | RSI: 38.46
+2026-04-13 02:22:41,890 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:22:41,892 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:22:42,475 | INFO | LINKUSDT | RSI: 37.5
+2026-04-13 02:22:42,518 | INFO | LINKUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:22:42,528 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:23:42,523 | INFO | 📊 Analizando mercado...
+2026-04-13 02:23:43,068 | INFO | BTCUSDT | RSI: 45.99
+2026-04-13 02:23:43,523 | INFO | ETHUSDT | RSI: 41.21
+2026-04-13 02:23:43,987 | INFO | SOLUSDT | RSI: 38.46
+2026-04-13 02:23:43,994 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:23:43,997 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:23:44,458 | INFO | LINKUSDT | RSI: 42.86
+2026-04-13 02:24:44,457 | INFO | 📊 Analizando mercado...
+2026-04-13 02:24:45,165 | INFO | BTCUSDT | RSI: 49.57
+2026-04-13 02:24:45,802 | INFO | ETHUSDT | RSI: 44.71
+2026-04-13 02:24:46,347 | INFO | SOLUSDT | RSI: 45.76
+2026-04-13 02:24:46,925 | INFO | LINKUSDT | RSI: 50.0
+2026-04-13 02:25:46,922 | INFO | 📊 Analizando mercado...
+2026-04-13 02:25:47,546 | INFO | BTCUSDT | RSI: 66.47
+2026-04-13 02:25:47,551 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:25:47,555 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:25:47,969 | INFO | ETHUSDT | RSI: 63.37
+2026-04-13 02:25:47,971 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:25:47,974 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:25:48,407 | INFO | SOLUSDT | RSI: 65.28
+2026-04-13 02:25:48,411 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:25:48,412 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:25:48,826 | INFO | LINKUSDT | RSI: 60.0
+2026-04-13 02:26:48,809 | INFO | 📊 Analizando mercado...
+2026-04-13 02:26:49,514 | INFO | BTCUSDT | RSI: 76.07
+2026-04-13 02:26:49,521 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:26:49,523 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:26:49,964 | INFO | ETHUSDT | RSI: 73.89
+2026-04-13 02:26:49,967 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:26:49,968 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:26:50,431 | INFO | SOLUSDT | RSI: 70.77
+2026-04-13 02:26:50,433 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:26:50,434 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:26:50,845 | INFO | LINKUSDT | RSI: 66.67
+2026-04-13 02:26:50,848 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:26:50,850 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:27:50,821 | INFO | 📊 Analizando mercado...
+2026-04-13 02:27:51,799 | INFO | BTCUSDT | RSI: 68.21
+2026-04-13 02:27:51,852 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:27:51,882 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:27:52,385 | INFO | ETHUSDT | RSI: 64.42
+2026-04-13 02:27:52,409 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:27:52,413 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:27:53,148 | INFO | SOLUSDT | RSI: 62.69
+2026-04-13 02:27:53,307 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:27:53,444 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:27:54,820 | INFO | LINKUSDT | RSI: 70.0
+2026-04-13 02:27:54,982 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:27:55,028 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:28:55,137 | INFO | 📊 Analizando mercado...
+2026-04-13 02:28:55,656 | INFO | BTCUSDT | RSI: 76.67
+2026-04-13 02:28:55,658 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:28:55,660 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:28:56,094 | INFO | ETHUSDT | RSI: 69.78
+2026-04-13 02:28:56,097 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:28:56,098 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:28:56,531 | INFO | SOLUSDT | RSI: 67.16
+2026-04-13 02:28:56,534 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:28:56,535 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:28:56,953 | INFO | LINKUSDT | RSI: 66.67
+2026-04-13 02:28:56,960 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:28:56,962 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:29:56,962 | INFO | 📊 Analizando mercado...
+2026-04-13 02:29:57,472 | INFO | BTCUSDT | RSI: 76.83
+2026-04-13 02:29:57,476 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:29:57,477 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:29:57,926 | INFO | ETHUSDT | RSI: 70.48
+2026-04-13 02:29:57,929 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:29:57,930 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:29:58,389 | INFO | SOLUSDT | RSI: 70.15
+2026-04-13 02:29:58,393 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:29:58,394 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:29:58,810 | INFO | LINKUSDT | RSI: 66.67
+2026-04-13 02:29:58,813 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:29:58,815 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:30:58,819 | INFO | 📊 Analizando mercado...
+2026-04-13 02:30:59,364 | INFO | BTCUSDT | RSI: 77.49
+2026-04-13 02:30:59,367 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:30:59,369 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:30:59,800 | INFO | ETHUSDT | RSI: 72.8
+2026-04-13 02:30:59,803 | INFO | ETHUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:30:59,804 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:31:00,224 | INFO | SOLUSDT | RSI: 74.29
+2026-04-13 02:31:00,235 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:31:00,236 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:31:00,662 | INFO | LINKUSDT | RSI: 75.0
+2026-04-13 02:31:00,664 | INFO | LINKUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:31:00,665 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:32:00,663 | INFO | 📊 Analizando mercado...
+2026-04-13 02:32:01,319 | INFO | BTCUSDT | RSI: 71.81
+2026-04-13 02:32:01,385 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:32:01,395 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:32:01,844 | INFO | ETHUSDT | RSI: 65.51
+2026-04-13 02:32:01,858 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:32:01,863 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:32:02,550 | INFO | SOLUSDT | RSI: 70.49
+2026-04-13 02:32:02,552 | INFO | SOLUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:32:02,554 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:32:02,983 | INFO | LINKUSDT | RSI: 71.43
+2026-04-13 02:32:02,985 | INFO | LINKUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:32:02,986 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:33:02,984 | INFO | 📊 Analizando mercado...
+2026-04-13 02:33:03,626 | INFO | BTCUSDT | RSI: 68.77
+2026-04-13 02:33:03,758 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:33:03,803 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:33:04,403 | INFO | ETHUSDT | RSI: 62.73
+2026-04-13 02:33:04,466 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:33:04,505 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:33:05,083 | INFO | SOLUSDT | RSI: 60.56
+2026-04-13 02:33:05,085 | INFO | SOLUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:33:05,087 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:33:05,507 | INFO | LINKUSDT | RSI: 62.5
+2026-04-13 02:33:05,510 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:33:05,512 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:34:05,509 | INFO | 📊 Analizando mercado...
+2026-04-13 02:34:06,067 | INFO | BTCUSDT | RSI: 66.38
+2026-04-13 02:34:06,071 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:34:06,073 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:34:06,523 | INFO | ETHUSDT | RSI: 55.99
+2026-04-13 02:34:07,125 | INFO | SOLUSDT | RSI: 55.56
+2026-04-13 02:34:07,633 | INFO | LINKUSDT | RSI: 66.67
+2026-04-13 02:34:07,637 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:34:07,639 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:35:07,635 | INFO | 📊 Analizando mercado...
+2026-04-13 02:35:08,186 | INFO | BTCUSDT | RSI: 70.2
+2026-04-13 02:35:08,190 | INFO | BTCUSDT | Señal detectada: SELL_STRONG
+2026-04-13 02:35:08,191 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:35:08,707 | INFO | ETHUSDT | RSI: 60.69
+2026-04-13 02:35:08,709 | INFO | ETHUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:35:08,711 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:35:09,135 | INFO | SOLUSDT | RSI: 56.76
+2026-04-13 02:35:09,593 | INFO | LINKUSDT | RSI: 60.0
+2026-04-13 02:36:09,594 | INFO | 📊 Analizando mercado...
+2026-04-13 02:36:10,142 | INFO | BTCUSDT | RSI: 68.16
+2026-04-13 02:36:10,144 | INFO | BTCUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:36:10,146 | ERROR | Error en símbolo BTCUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:36:10,582 | INFO | ETHUSDT | RSI: 57.08
+2026-04-13 02:36:11,009 | INFO | SOLUSDT | RSI: 50.68
+2026-04-13 02:36:11,421 | INFO | LINKUSDT | RSI: 63.64
+2026-04-13 02:36:11,425 | INFO | LINKUSDT | Señal detectada: SELL_WEAK
+2026-04-13 02:36:11,426 | ERROR | Error en símbolo LINKUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:37:11,424 | INFO | 📊 Analizando mercado...
+2026-04-13 02:37:12,045 | INFO | BTCUSDT | RSI: 58.47
+2026-04-13 02:37:12,511 | INFO | ETHUSDT | RSI: 51.66
+2026-04-13 02:37:13,357 | INFO | SOLUSDT | RSI: 45.68
+2026-04-13 02:37:14,289 | INFO | LINKUSDT | RSI: 57.14
+2026-04-13 02:38:14,288 | INFO | 📊 Analizando mercado...
+2026-04-13 02:38:14,859 | INFO | BTCUSDT | RSI: 41.17
+2026-04-13 02:38:15,297 | INFO | ETHUSDT | RSI: 37.86
+2026-04-13 02:38:15,300 | INFO | ETHUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:38:15,301 | ERROR | Error en símbolo ETHUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:38:15,727 | INFO | SOLUSDT | RSI: 34.88
+2026-04-13 02:38:15,810 | INFO | SOLUSDT | Señal detectada: BUY_WEAK
+2026-04-13 02:38:15,822 | ERROR | Error en símbolo SOLUSDT: send_alert() takes 1 positional argument but 2 were given
+2026-04-13 02:38:16,975 | INFO | LINKUSDT | RSI: 46.15
