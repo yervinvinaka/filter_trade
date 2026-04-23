@@ -1,23 +1,26 @@
 from fastapi import FastAPI
-import threading
-
 from app.db.database import init_db, get_connection
-from app.main import run_bot  # 👈 importa tu bot
+from app.main import run_bot
+import threading
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
+
+logger = logging.getLogger("API")
 
 app = FastAPI()
 
 
 @app.on_event("startup")
 def startup():
-    # Inicializa DB
     init_db()
+    logger.info("🤖 Bot iniciado desde API...")
 
-    # Arranca el bot en background
-    def bot_runner():
-        print("🤖 Bot iniciado desde API...")
-        run_bot()
-
-    thread = threading.Thread(target=bot_runner, daemon=True)
+    # Ejecutar bot en segundo plano
+    thread = threading.Thread(target=run_bot, daemon=True)
     thread.start()
 
 
