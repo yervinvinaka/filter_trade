@@ -1,6 +1,5 @@
-requests
 fastapi
 uvicorn
+requests
 python-dotenv
 numpy
-pip freeze
