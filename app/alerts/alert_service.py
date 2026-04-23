@@ -20,7 +20,7 @@ def send_alert(message: str):
         if response.status_code != 200:
             print("❌ Error Telegram:", response.text)
         else:
-            print("📩 Alerta enviada")
+            print("📩 Mensaje enviado")
 
     except Exception as e:
-        print("❌ Error enviando alerta:", e)
+        print("❌ Error enviando mensaje:", e)

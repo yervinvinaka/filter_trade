@@ -6,9 +6,16 @@ from app.alerts.alert_service import send_alert
 
 print("🔥 BOT ARRANCANDO EN RAILWAY")
 
-logging.basicConfig(level=logging.INFO)
+# 🔥 Configuración de logs más limpia
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
 
 symbols = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "LINKUSDT"]
+
+# 🔥 Para evitar spam (memoria de última señal)
+last_signals = {}
 
 
 def run_bot():
@@ -31,16 +38,44 @@ def run_bot():
             log_msg = f"{symbol} | OI: {oi:.2f} | Funding: {funding:.6f}"
             logging.info(log_msg)
 
-            # 🚨 ALERTAS
+            # 🔥 Detectar tipo de señal
+            signal = None
+
             if funding > 0.0001:
-                send_alert(f"🚀 POSIBLE LONG\n{symbol}\nFunding: {funding:.6f}")
+                signal = "LONG"
 
             elif funding < -0.0001:
-                send_alert(f"🔻 POSIBLE SHORT\n{symbol}\nFunding: {funding:.6f}")
+                signal = "SHORT"
+
+            # 🔥 Evitar repetir la misma señal
+            if signal and last_signals.get(symbol) != signal:
+                last_signals[symbol] = signal
+
+                if signal == "LONG":
+                    message = (
+                        f"🚀 POSIBLE LONG\n"
+                        f"{symbol}\n"
+                        f"Funding: {funding:.6f}\n"
+                        f"OI: {oi:.2f}"
+                    )
+
+                else:
+                    message = (
+                        f"🔻 POSIBLE SHORT\n"
+                        f"{symbol}\n"
+                        f"Funding: {funding:.6f}\n"
+                        f"OI: {oi:.2f}"
+                    )
+
+                logging.info(f"📩 Enviando alerta {signal}: {symbol}")
+                send_alert(message)
+
+            else:
+                logging.info(f"Sin cambio de señal en {symbol}")
 
         time.sleep(60)
 
 
-# 🔥 ESTO ES LO QUE TE FALTABA
+# 🔥 ENTRYPOINT
 if __name__ == "__main__":
     run_bot()

@@ -1,25 +1,21 @@
 import os
 from dotenv import load_dotenv
 
-# Cargar variables del .env
+# 🔥 Cargar .env
 load_dotenv()
 
 
 class Settings:
-    # 🔐 APIs
     BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
     BINANCE_SECRET = os.getenv("BINANCE_SECRET")
 
-    # 🤖 Telegram
-    TELEGRAM_TOKEN = os.getenv("8212208208:AAFMBKBrfQOoEGg8TTuSY8Wtltz85t2OVsw")
-    TELEGRAM_CHAT_ID = os.getenv("1357188939")
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-    # 📊 Configuración del bot
     WATCHLIST = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "LINKUSDT"]
 
-    LOOP_INTERVAL = 60  # segundos
-
-    LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+    LOOP_INTERVAL = 60
+    LOG_LEVEL = "INFO"
 
 
 settings = Settings()

@@ -39,14 +39,33 @@ def get_signal(rsi):
     return None
 
 
+# 🔥 NUEVO: DETECCIÓN DE MOVIMIENTOS FUERTES
+def detect_movement(klines):
+    try:
+        last = klines[-1]
+
+        open_price = float(last[1])
+        close_price = float(last[4])
+
+        change_pct = ((close_price - open_price) / open_price) * 100
+
+        if change_pct <= -3:
+            return "DUMP", change_pct
+        elif change_pct >= 3:
+            return "PUMP", change_pct
+
+        return None, change_pct
+
+    except:
+        return None, 0
+
+
 def process_market_data(symbol, closes):
     rsi = calculate_rsi(closes)
     signal = get_signal(rsi)
 
     if signal:
         print(f"📊 {symbol} | RSI: {rsi:.2f} | Señal: {signal}")
-
-        # 🔥 GUARDAR EN DB
         save_signal(symbol, signal, rsi)
 
     return signal
