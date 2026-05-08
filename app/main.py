@@ -20,6 +20,10 @@ from app.services.confidence_service import (
     calculate_confidence
 )
 
+from app.services.interpreter_service import (
+    interpret_signal
+)
+
 from app.alerts.alert_service import send_alert
 
 
@@ -65,6 +69,8 @@ last_heartbeat = 0
 # ==================================================
 
 def run_bot():
+
+    global last_heartbeat
 
     logging.info("🚀 Bot iniciado...")
 
@@ -151,6 +157,8 @@ def run_bot():
 
                     confidence = None
 
+                    interpretation = None
+
                     if signal:
 
                         confidence = calculate_confidence(
@@ -160,6 +168,19 @@ def run_bot():
                             funding,
                             volatility,
                             movement
+                        )
+
+                        # ==================================================
+                        # 🔥 INTERPRETER
+                        # ==================================================
+
+                        interpretation = interpret_signal(
+                            signal,
+                            rsi,
+                            ema_signal,
+                            confidence,
+                            movement,
+                            volatility
                         )
 
                     # ==================================================
@@ -188,14 +209,17 @@ def run_bot():
 
                         last_signals[symbol] = signal
 
-                        # 🔥 DIRECCIÓN
+                        # ==================================================
+                        # 🔥 DIRECTION EMOJI
+                        # ==================================================
+
                         emoji = "🟢"
 
                         if "SELL" in signal:
                             emoji = "🔴"
 
                         # ==================================================
-                        # 🔥 MENSAJE
+                        # 🔥 BASE MESSAGE
                         # ==================================================
 
                         message = (
@@ -262,7 +286,7 @@ def run_bot():
                             )
 
                         # ==================================================
-                        # 🔥 MOVEMENTS
+                        # 🔥 MOVEMENT DETECTION
                         # ==================================================
 
                         if movement:
@@ -276,6 +300,22 @@ def run_bot():
                                 f"⚡ Change: "
                                 f"{movement['change_pct']}%"
                             )
+
+                        # ==================================================
+                        # 🔥 MARKET INTERPRETATION
+                        # ==================================================
+
+                        if interpretation:
+
+                            message += (
+                                f"\n\n"
+                                f"💡 Market Interpretation\n\n"
+                                f"{interpretation}"
+                            )
+
+                        # ==================================================
+                        # 🔥 SEND ALERT
+                        # ==================================================
 
                         logging.info(
                             f"📩 Enviando SIGNAL ALERT: "
@@ -357,8 +397,6 @@ def run_bot():
             # 🔥 HEARTBEAT
             # ==================================================
 
-            global last_heartbeat
-
             current_time = time.time()
 
             if (
@@ -386,7 +424,7 @@ def run_bot():
                 last_heartbeat = current_time
 
             # ==================================================
-            # 🔥 ESPERA
+            # 🔥 WAIT
             # ==================================================
 
             time.sleep(60)
