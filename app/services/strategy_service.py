@@ -40,7 +40,7 @@ def get_signal(rsi, ema_signal):
         return None
 
     # 🔥 LONG FUERTE
-    if rsi < 25 and ema_signal in ["LONG", "BULLISH"]:
+    if rsi < 30 and ema_signal in ["LONG", "BULLISH"]:
         return "BUY_STRONG"
 
     # 🔹 LONG DÉBIL
@@ -48,7 +48,7 @@ def get_signal(rsi, ema_signal):
         return "BUY_WEAK"
 
     # 🔥 SHORT FUERTE
-    elif rsi > 75 and ema_signal in ["SHORT", "BEARISH"]:
+    elif rsi > 70 and ema_signal in ["SHORT", "BEARISH"]:
         return "SELL_STRONG"
 
     # 🔹 SHORT DÉBIL
