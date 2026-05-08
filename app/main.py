@@ -11,6 +11,11 @@ from app.services.volatility_service import (
     analyze_volatility
 )
 
+from app.services.risk_service import (
+    calculate_atr,
+    calculate_trade_levels
+)
+
 from app.alerts.alert_service import send_alert
 
 
@@ -32,7 +37,7 @@ symbols = [
 ]
 
 
-# 🔥 Evitar spam
+# 🔥 Evitar spam señales
 last_signals = {}
 
 # 🔥 Evitar spam volatilidad
@@ -40,16 +45,23 @@ last_volatility_alert = {}
 
 
 def run_bot():
+
     logging.info("🚀 Bot iniciado...")
 
     market = MarketPosition()
 
     while True:
+
         logging.info("📊 Analizando mercado...")
 
         for symbol in symbols:
 
             try:
+
+                # ==================================================
+                # 🔹 MARKET DATA
+                # ==================================================
+
                 data = market.fetch_data(symbol)
 
                 if not data:
@@ -60,7 +72,10 @@ def run_bot():
                 closes = data["closes"]
                 klines = data["klines"]
 
-                # 🔥 Procesar estrategia principal
+                # ==================================================
+                # 🔹 ESTRATEGIA
+                # ==================================================
+
                 result = process_market_data(
                     symbol,
                     closes,
@@ -75,16 +90,39 @@ def run_bot():
                 ema_signal = result["ema_signal"]
                 movement = result["movement"]
 
-                # 🔥 Volatility Engine
+                # ==================================================
+                # 🔥 VOLATILITY ENGINE
+                # ==================================================
+
                 volatility = analyze_volatility(
                     klines,
                     oi
                 )
 
-                # 🔹 RSI seguro
+                # ==================================================
+                # 🔥 ATR + RISK ENGINE
+                # ==================================================
+
+                current_price = float(
+                    klines[-1][4]
+                )
+
+                atr = calculate_atr(
+                    klines
+                )
+
+                trade_levels = calculate_trade_levels(
+                    signal,
+                    current_price,
+                    atr
+                )
+
+                # ==================================================
+                # 🔹 LOGS
+                # ==================================================
+
                 rsi_value = round(rsi, 2) if rsi else 0
 
-                # 🔹 LOG GENERAL
                 logging.info(
                     f"{symbol} | "
                     f"RSI: {rsi_value} | "
@@ -94,7 +132,7 @@ def run_bot():
                 )
 
                 # ==================================================
-                # 🔥 ALERTAS DE SIGNAL
+                # 🔥 SIGNAL ALERTS
                 # ==================================================
 
                 if signal and last_signals.get(symbol) != signal:
@@ -106,6 +144,7 @@ def run_bot():
                     if "SELL" in signal:
                         emoji = "🔴"
 
+                    # 🔥 MENSAJE PRINCIPAL
                     message = (
                         f"{emoji} SIGNAL ALERT\n\n"
                         f"📊 Symbol: {symbol}\n"
@@ -116,23 +155,46 @@ def run_bot():
                         f"📦 OI: {oi:.2f}"
                     )
 
-                    # 🔥 Movimiento detectado
+                    # ==================================================
+                    # 🔥 SL / TP DINÁMICOS
+                    # ==================================================
+
+                    if trade_levels:
+
+                        message += (
+                            f"\n\n"
+                            f"🎯 Entry: {trade_levels['entry']}\n"
+                            f"🛑 SL: {trade_levels['stop_loss']}\n"
+                            f"💰 TP: {trade_levels['take_profit']}\n"
+                            f"📈 R:R: {trade_levels['risk_reward']}\n"
+                            f"📊 ATR: {trade_levels['atr']}"
+                        )
+
+                    # ==================================================
+                    # 🔥 MOVIMIENTOS FUERTES
+                    # ==================================================
+
                     if movement:
+
                         message += (
                             f"\n\n"
                             f"🚨 {movement['type']} DETECTED\n"
                             f"⚡ Change: {movement['change_pct']}%"
                         )
 
-                    logging.info(f"📩 Enviando SIGNAL ALERT: {symbol}")
+                    logging.info(
+                        f"📩 Enviando SIGNAL ALERT: {symbol}"
+                    )
 
                     send_alert(message)
 
                 else:
-                    logging.info(f"⏸️ Sin nueva señal en {symbol}")
+                    logging.info(
+                        f"⏸️ Sin nueva señal en {symbol}"
+                    )
 
                 # ==================================================
-                # 🔥 ALERTAS DE VOLATILIDAD
+                # 🔥 VOLATILITY ALERTS
                 # ==================================================
 
                 if (
@@ -144,13 +206,14 @@ def run_bot():
                         f"{symbol}_{volatility['event']}"
                     )
 
-                    # 🔥 Evitar spam
                     if (
                         last_volatility_alert.get(symbol)
                         != volatility_key
                     ):
 
-                        last_volatility_alert[symbol] = volatility_key
+                        last_volatility_alert[symbol] = (
+                            volatility_key
+                        )
 
                         volatility_msg = (
                             f"⚠️ HIGH VOLATILITY DETECTED\n\n"
@@ -169,11 +232,12 @@ def run_bot():
                         send_alert(volatility_msg)
 
             except Exception as e:
+
                 logging.error(
                     f"❌ Error procesando {symbol}: {e}"
                 )
 
-        # 🔹 Espera entre ciclos
+        # 🔥 Espera entre ciclos
         time.sleep(60)
 
 
