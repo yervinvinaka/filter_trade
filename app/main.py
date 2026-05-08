@@ -16,18 +16,29 @@ from app.services.risk_service import (
     calculate_trade_levels
 )
 
+from app.services.confidence_service import (
+    calculate_confidence
+)
+
 from app.alerts.alert_service import send_alert
 
 
 print("🔥 BOT ARRANCANDO EN RAILWAY")
 
 
-# 🔹 Configuración logs
+# ==================================================
+# 🔹 CONFIG LOGS
+# ==================================================
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s"
 )
 
+
+# ==================================================
+# 🔹 SYMBOLS
+# ==================================================
 
 symbols = [
     "BTCUSDT",
@@ -37,12 +48,18 @@ symbols = [
 ]
 
 
-# 🔥 Evitar spam señales
+# ==================================================
+# 🔥 ANTI-SPAM
+# ==================================================
+
 last_signals = {}
 
-# 🔥 Evitar spam volatilidad
 last_volatility_alert = {}
 
+
+# ==================================================
+# 🔥 MAIN LOOP
+# ==================================================
 
 def run_bot():
 
@@ -68,12 +85,15 @@ def run_bot():
                     continue
 
                 oi = data["open_interest"]
+
                 funding = data["funding_rate"]
+
                 closes = data["closes"]
+
                 klines = data["klines"]
 
                 # ==================================================
-                # 🔹 ESTRATEGIA
+                # 🔹 STRATEGY ENGINE
                 # ==================================================
 
                 result = process_market_data(
@@ -86,8 +106,11 @@ def run_bot():
                     continue
 
                 signal = result["signal"]
+
                 rsi = result["rsi"]
+
                 ema_signal = result["ema_signal"]
+
                 movement = result["movement"]
 
                 # ==================================================
@@ -100,7 +123,7 @@ def run_bot():
                 )
 
                 # ==================================================
-                # 🔥 ATR + RISK ENGINE
+                # 🔥 RISK ENGINE
                 # ==================================================
 
                 current_price = float(
@@ -116,6 +139,23 @@ def run_bot():
                     current_price,
                     atr
                 )
+
+                # ==================================================
+                # 🔥 CONFIDENCE ENGINE
+                # ==================================================
+
+                confidence = None
+
+                if signal:
+
+                    confidence = calculate_confidence(
+                        signal,
+                        rsi,
+                        ema_signal,
+                        funding,
+                        volatility,
+                        movement
+                    )
 
                 # ==================================================
                 # 🔹 LOGS
@@ -139,12 +179,19 @@ def run_bot():
 
                     last_signals[symbol] = signal
 
+                    # ==================================================
+                    # 🔥 EMOJI DIRECCIÓN
+                    # ==================================================
+
                     emoji = "🟢"
 
                     if "SELL" in signal:
                         emoji = "🔴"
 
-                    # 🔥 MENSAJE PRINCIPAL
+                    # ==================================================
+                    # 🔥 MENSAJE BASE
+                    # ==================================================
+
                     message = (
                         f"{emoji} SIGNAL ALERT\n\n"
                         f"📊 Symbol: {symbol}\n"
@@ -156,22 +203,54 @@ def run_bot():
                     )
 
                     # ==================================================
-                    # 🔥 SL / TP DINÁMICOS
+                    # 🔥 SL / TP
                     # ==================================================
 
                     if trade_levels:
 
                         message += (
                             f"\n\n"
-                            f"🎯 Entry: {trade_levels['entry']}\n"
-                            f"🛑 SL: {trade_levels['stop_loss']}\n"
-                            f"💰 TP: {trade_levels['take_profit']}\n"
-                            f"📈 R:R: {trade_levels['risk_reward']}\n"
-                            f"📊 ATR: {trade_levels['atr']}"
+                            f"🎯 Entry: "
+                            f"{trade_levels['entry']}\n"
+
+                            f"🛑 SL: "
+                            f"{trade_levels['stop_loss']}\n"
+
+                            f"💰 TP: "
+                            f"{trade_levels['take_profit']}\n"
+
+                            f"📈 R:R: "
+                            f"{trade_levels['risk_reward']}\n"
+
+                            f"📊 ATR: "
+                            f"{trade_levels['atr']}"
                         )
 
                     # ==================================================
-                    # 🔥 MOVIMIENTOS FUERTES
+                    # 🔥 CONFIDENCE SCORE
+                    # ==================================================
+
+                    if confidence:
+
+                        confidence_emoji = "🟢"
+
+                        if confidence["level"] == "MEDIUM":
+                            confidence_emoji = "🟡"
+
+                        elif confidence["level"] == "LOW":
+                            confidence_emoji = "🔴"
+
+                        message += (
+                            f"\n\n"
+                            f"{confidence_emoji} Confidence: "
+                            f"{confidence['score']}%\n"
+
+                            f"📊 Strength: "
+                            f"{confidence['level']}"
+                        )
+
+                    # ==================================================
+                    # 🔥 MOVEMENT DETECTION
                     # ==================================================
 
                     if movement:
@@ -179,8 +258,13 @@ def run_bot():
                         message += (
                             f"\n\n"
                             f"🚨 {movement['type']} DETECTED\n"
-                            f"⚡ Change: {movement['change_pct']}%"
+                            f"⚡ Change: "
+                            f"{movement['change_pct']}%"
                         )
+
+                    # ==================================================
+                    # 🔥 ENVIAR ALERTA
+                    # ==================================================
 
                     logging.info(
                         f"📩 Enviando SIGNAL ALERT: {symbol}"
@@ -189,6 +273,7 @@ def run_bot():
                     send_alert(message)
 
                 else:
+
                     logging.info(
                         f"⏸️ Sin nueva señal en {symbol}"
                     )
@@ -217,12 +302,23 @@ def run_bot():
 
                         volatility_msg = (
                             f"⚠️ HIGH VOLATILITY DETECTED\n\n"
+
                             f"📊 Symbol: {symbol}\n"
-                            f"🔥 Event: {volatility['event']}\n"
-                            f"⚡ Strength: {volatility['strength']}\n"
-                            f"📈 Price Change: {volatility['change_pct']}%\n"
-                            f"📦 Volume Change: {volatility['volume_change']}%\n"
-                            f"🎯 Score: {volatility['score']}"
+
+                            f"🔥 Event: "
+                            f"{volatility['event']}\n"
+
+                            f"⚡ Strength: "
+                            f"{volatility['strength']}\n"
+
+                            f"📈 Price Change: "
+                            f"{volatility['change_pct']}%\n"
+
+                            f"📦 Volume Change: "
+                            f"{volatility['volume_change']}%\n"
+
+                            f"🎯 Score: "
+                            f"{volatility['score']}"
                         )
 
                         logging.info(
@@ -237,10 +333,17 @@ def run_bot():
                     f"❌ Error procesando {symbol}: {e}"
                 )
 
-        # 🔥 Espera entre ciclos
+        # ==================================================
+        # 🔥 ESPERA
+        # ==================================================
+
         time.sleep(60)
 
 
+# ==================================================
 # 🔥 ENTRYPOINT
+# ==================================================
+
 if __name__ == "__main__":
+
     run_bot()
