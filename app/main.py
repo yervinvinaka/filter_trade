@@ -56,6 +56,9 @@ last_signals = {}
 
 last_volatility_alert = {}
 
+# 🔥 HEARTBEAT
+last_heartbeat = 0
+
 
 # ==================================================
 # 🔥 MAIN LOOP
@@ -69,275 +72,332 @@ def run_bot():
 
     while True:
 
-        logging.info("📊 Analizando mercado...")
+        try:
 
-        for symbol in symbols:
+            logging.info("📊 Analizando mercado...")
 
-            try:
+            for symbol in symbols:
 
-                # ==================================================
-                # 🔹 MARKET DATA
-                # ==================================================
+                try:
 
-                data = market.fetch_data(symbol)
+                    # ==================================================
+                    # 🔹 MARKET DATA
+                    # ==================================================
 
-                if not data:
-                    continue
+                    data = market.fetch_data(symbol)
 
-                oi = data["open_interest"]
+                    if not data:
+                        continue
 
-                funding = data["funding_rate"]
+                    oi = data["open_interest"]
 
-                closes = data["closes"]
+                    funding = data["funding_rate"]
 
-                klines = data["klines"]
+                    closes = data["closes"]
 
-                # ==================================================
-                # 🔹 STRATEGY ENGINE
-                # ==================================================
+                    klines = data["klines"]
 
-                result = process_market_data(
-                    symbol,
-                    closes,
-                    klines
-                )
+                    # ==================================================
+                    # 🔹 STRATEGY ENGINE
+                    # ==================================================
 
-                if not result:
-                    continue
+                    result = process_market_data(
+                        symbol,
+                        closes,
+                        klines
+                    )
 
-                signal = result["signal"]
+                    if not result:
+                        continue
 
-                rsi = result["rsi"]
+                    signal = result["signal"]
 
-                ema_signal = result["ema_signal"]
+                    rsi = result["rsi"]
 
-                movement = result["movement"]
+                    ema_signal = result["ema_signal"]
 
-                # ==================================================
-                # 🔥 VOLATILITY ENGINE
-                # ==================================================
+                    movement = result["movement"]
 
-                volatility = analyze_volatility(
-                    klines,
-                    oi
-                )
+                    # ==================================================
+                    # 🔥 VOLATILITY ENGINE
+                    # ==================================================
 
-                # ==================================================
-                # 🔥 RISK ENGINE
-                # ==================================================
+                    volatility = analyze_volatility(
+                        klines,
+                        oi
+                    )
 
-                current_price = float(
-                    klines[-1][4]
-                )
+                    # ==================================================
+                    # 🔥 RISK ENGINE
+                    # ==================================================
 
-                atr = calculate_atr(
-                    klines
-                )
+                    current_price = float(
+                        klines[-1][4]
+                    )
 
-                trade_levels = calculate_trade_levels(
-                    signal,
-                    current_price,
-                    atr
-                )
+                    atr = calculate_atr(
+                        klines
+                    )
 
-                # ==================================================
-                # 🔥 CONFIDENCE ENGINE
-                # ==================================================
-
-                confidence = None
-
-                if signal:
-
-                    confidence = calculate_confidence(
+                    trade_levels = calculate_trade_levels(
                         signal,
-                        rsi,
-                        ema_signal,
-                        funding,
-                        volatility,
-                        movement
-                    )
-
-                # ==================================================
-                # 🔹 LOGS
-                # ==================================================
-
-                rsi_value = round(rsi, 2) if rsi else 0
-
-                logging.info(
-                    f"{symbol} | "
-                    f"RSI: {rsi_value} | "
-                    f"EMA: {ema_signal} | "
-                    f"Funding: {funding:.6f} | "
-                    f"OI: {oi:.2f}"
-                )
-
-                # ==================================================
-                # 🔥 SIGNAL ALERTS
-                # ==================================================
-
-                if signal and last_signals.get(symbol) != signal:
-
-                    last_signals[symbol] = signal
-
-                    # ==================================================
-                    # 🔥 EMOJI DIRECCIÓN
-                    # ==================================================
-
-                    emoji = "🟢"
-
-                    if "SELL" in signal:
-                        emoji = "🔴"
-
-                    # ==================================================
-                    # 🔥 MENSAJE BASE
-                    # ==================================================
-
-                    message = (
-                        f"{emoji} SIGNAL ALERT\n\n"
-                        f"📊 Symbol: {symbol}\n"
-                        f"📈 Signal: {signal}\n"
-                        f"📉 RSI: {rsi_value}\n"
-                        f"📊 EMA Trend: {ema_signal}\n"
-                        f"💰 Funding: {funding:.6f}\n"
-                        f"📦 OI: {oi:.2f}"
+                        current_price,
+                        atr
                     )
 
                     # ==================================================
-                    # 🔥 SL / TP
+                    # 🔥 CONFIDENCE ENGINE
                     # ==================================================
 
-                    if trade_levels:
+                    confidence = None
 
-                        message += (
-                            f"\n\n"
-                            f"🎯 Entry: "
-                            f"{trade_levels['entry']}\n"
+                    if signal:
 
-                            f"🛑 SL: "
-                            f"{trade_levels['stop_loss']}\n"
-
-                            f"💰 TP: "
-                            f"{trade_levels['take_profit']}\n"
-
-                            f"📈 R:R: "
-                            f"{trade_levels['risk_reward']}\n"
-
-                            f"📊 ATR: "
-                            f"{trade_levels['atr']}"
+                        confidence = calculate_confidence(
+                            signal,
+                            rsi,
+                            ema_signal,
+                            funding,
+                            volatility,
+                            movement
                         )
 
                     # ==================================================
-                    # 🔥 CONFIDENCE SCORE
+                    # 🔹 LOGS
                     # ==================================================
 
-                    if confidence:
-
-                        confidence_emoji = "🟢"
-
-                        if confidence["level"] == "MEDIUM":
-                            confidence_emoji = "🟡"
-
-                        elif confidence["level"] == "LOW":
-                            confidence_emoji = "🔴"
-
-                        message += (
-                            f"\n\n"
-                            f"{confidence_emoji} Confidence: "
-                            f"{confidence['score']}%\n"
-
-                            f"📊 Strength: "
-                            f"{confidence['level']}"
-                        )
-
-                    # ==================================================
-                    # 🔥 MOVEMENT DETECTION
-                    # ==================================================
-
-                    if movement:
-
-                        message += (
-                            f"\n\n"
-                            f"🚨 {movement['type']} DETECTED\n"
-                            f"⚡ Change: "
-                            f"{movement['change_pct']}%"
-                        )
-
-                    # ==================================================
-                    # 🔥 ENVIAR ALERTA
-                    # ==================================================
+                    rsi_value = round(rsi, 2) if rsi else 0
 
                     logging.info(
-                        f"📩 Enviando SIGNAL ALERT: {symbol}"
+                        f"{symbol} | "
+                        f"RSI: {rsi_value} | "
+                        f"EMA: {ema_signal} | "
+                        f"Funding: {funding:.6f} | "
+                        f"OI: {oi:.2f}"
                     )
 
-                    send_alert(message)
-
-                else:
-
-                    logging.info(
-                        f"⏸️ Sin nueva señal en {symbol}"
-                    )
-
-                # ==================================================
-                # 🔥 VOLATILITY ALERTS
-                # ==================================================
-
-                if (
-                    volatility
-                    and volatility["score"] >= 60
-                ):
-
-                    volatility_key = (
-                        f"{symbol}_{volatility['event']}"
-                    )
+                    # ==================================================
+                    # 🔥 SIGNAL ALERTS
+                    # ==================================================
 
                     if (
-                        last_volatility_alert.get(symbol)
-                        != volatility_key
+                        signal
+                        and last_signals.get(symbol)
+                        != signal
                     ):
 
-                        last_volatility_alert[symbol] = (
-                            volatility_key
-                        )
+                        last_signals[symbol] = signal
 
-                        volatility_msg = (
-                            f"⚠️ HIGH VOLATILITY DETECTED\n\n"
+                        # 🔥 DIRECCIÓN
+                        emoji = "🟢"
 
+                        if "SELL" in signal:
+                            emoji = "🔴"
+
+                        # ==================================================
+                        # 🔥 MENSAJE
+                        # ==================================================
+
+                        message = (
+                            f"{emoji} SIGNAL ALERT\n\n"
                             f"📊 Symbol: {symbol}\n"
-
-                            f"🔥 Event: "
-                            f"{volatility['event']}\n"
-
-                            f"⚡ Strength: "
-                            f"{volatility['strength']}\n"
-
-                            f"📈 Price Change: "
-                            f"{volatility['change_pct']}%\n"
-
-                            f"📦 Volume Change: "
-                            f"{volatility['volume_change']}%\n"
-
-                            f"🎯 Score: "
-                            f"{volatility['score']}"
+                            f"📈 Signal: {signal}\n"
+                            f"📉 RSI: {rsi_value}\n"
+                            f"📊 EMA Trend: {ema_signal}\n"
+                            f"💰 Funding: {funding:.6f}\n"
+                            f"📦 OI: {oi:.2f}"
                         )
+
+                        # ==================================================
+                        # 🔥 TRADE LEVELS
+                        # ==================================================
+
+                        if trade_levels:
+
+                            message += (
+                                f"\n\n"
+                                f"🎯 Entry: "
+                                f"{trade_levels['entry']}\n"
+
+                                f"🛑 SL: "
+                                f"{trade_levels['stop_loss']}\n"
+
+                                f"💰 TP: "
+                                f"{trade_levels['take_profit']}\n"
+
+                                f"📈 R:R: "
+                                f"{trade_levels['risk_reward']}\n"
+
+                                f"📊 ATR: "
+                                f"{trade_levels['atr']}"
+                            )
+
+                        # ==================================================
+                        # 🔥 CONFIDENCE SCORE
+                        # ==================================================
+
+                        if confidence:
+
+                            confidence_emoji = "🟢"
+
+                            if (
+                                confidence["level"]
+                                == "MEDIUM"
+                            ):
+                                confidence_emoji = "🟡"
+
+                            elif (
+                                confidence["level"]
+                                == "LOW"
+                            ):
+                                confidence_emoji = "🔴"
+
+                            message += (
+                                f"\n\n"
+                                f"{confidence_emoji} Confidence: "
+                                f"{confidence['score']}%\n"
+
+                                f"📊 Strength: "
+                                f"{confidence['level']}"
+                            )
+
+                        # ==================================================
+                        # 🔥 MOVEMENTS
+                        # ==================================================
+
+                        if movement:
+
+                            message += (
+                                f"\n\n"
+                                f"🚨 "
+                                f"{movement['type']} "
+                                f"DETECTED\n"
+
+                                f"⚡ Change: "
+                                f"{movement['change_pct']}%"
+                            )
 
                         logging.info(
-                            f"🚨 Volatility alert: {symbol}"
+                            f"📩 Enviando SIGNAL ALERT: "
+                            f"{symbol}"
                         )
 
-                        send_alert(volatility_msg)
+                        send_alert(message)
 
-            except Exception as e:
+                    else:
 
-                logging.error(
-                    f"❌ Error procesando {symbol}: {e}"
+                        logging.info(
+                            f"⏸️ Sin nueva señal en "
+                            f"{symbol}"
+                        )
+
+                    # ==================================================
+                    # 🔥 VOLATILITY ALERTS
+                    # ==================================================
+
+                    if (
+                        volatility
+                        and volatility["score"] >= 60
+                    ):
+
+                        volatility_key = (
+                            f"{symbol}_"
+                            f"{volatility['event']}"
+                        )
+
+                        if (
+                            last_volatility_alert.get(symbol)
+                            != volatility_key
+                        ):
+
+                            last_volatility_alert[symbol] = (
+                                volatility_key
+                            )
+
+                            volatility_msg = (
+                                f"⚠️ HIGH VOLATILITY "
+                                f"DETECTED\n\n"
+
+                                f"📊 Symbol: "
+                                f"{symbol}\n"
+
+                                f"🔥 Event: "
+                                f"{volatility['event']}\n"
+
+                                f"⚡ Strength: "
+                                f"{volatility['strength']}\n"
+
+                                f"📈 Price Change: "
+                                f"{volatility['change_pct']}%\n"
+
+                                f"📦 Volume Change: "
+                                f"{volatility['volume_change']}%\n"
+
+                                f"🎯 Score: "
+                                f"{volatility['score']}"
+                            )
+
+                            logging.info(
+                                f"🚨 Volatility alert: "
+                                f"{symbol}"
+                            )
+
+                            send_alert(
+                                volatility_msg
+                            )
+
+                except Exception as e:
+
+                    logging.error(
+                        f"❌ Error procesando "
+                        f"{symbol}: {e}"
+                    )
+
+            # ==================================================
+            # 🔥 HEARTBEAT
+            # ==================================================
+
+            global last_heartbeat
+
+            current_time = time.time()
+
+            if (
+                current_time - last_heartbeat
+                > 21600
+            ):
+
+                heartbeat_msg = (
+                    "✅ BOT ONLINE\n\n"
+                    "📊 Sistema funcionando "
+                    "correctamente\n"
+                    "🚀 Railway activo\n"
+                    "📡 Monitoreando mercado "
+                    "24/7"
                 )
 
-        # ==================================================
-        # 🔥 ESPERA
-        # ==================================================
+                send_alert(
+                    heartbeat_msg
+                )
 
-        time.sleep(60)
+                logging.info(
+                    "✅ Heartbeat enviado"
+                )
+
+                last_heartbeat = current_time
+
+            # ==================================================
+            # 🔥 ESPERA
+            # ==================================================
+
+            time.sleep(60)
+
+        except Exception as e:
+
+            logging.error(
+                f"🔥 ERROR CRÍTICO LOOP: {e}"
+            )
+
+            time.sleep(30)
 
 
 # ==================================================

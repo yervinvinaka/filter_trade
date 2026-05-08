@@ -1,30 +1,81 @@
 import requests
 
 
-BINANCE_FUTURES_URL = "https://fapi.binance.com"
-
-
 class MarketPosition:
+
     def __init__(self):
+
         self.last_data = None
 
+    # ==================================================
+    # 🔥 FETCH MARKET DATA
+    # ==================================================
+
     def fetch_data(self, symbol="BTCUSDT"):
+
         try:
-            # 🔹 Open Interest
-            oi_url = f"{BINANCE_FUTURES_URL}/fapi/v1/openInterest?symbol={symbol}"
-            oi_data = requests.get(oi_url, timeout=10).json()
-            open_interest = float(oi_data["openInterest"])
 
-            # 🔹 Funding Rate
-            funding_url = f"{BINANCE_FUTURES_URL}/fapi/v1/premiumIndex?symbol={symbol}"
-            funding_data = requests.get(funding_url, timeout=10).json()
-            funding_rate = float(funding_data["lastFundingRate"])
+            # ==================================================
+            # 🔹 OPEN INTEREST
+            # ==================================================
 
-            # 🔹 Velas 4H
-            klines_url = f"{BINANCE_FUTURES_URL}/fapi/v1/klines?symbol={symbol}&interval=4h&limit=100"
-            klines = requests.get(klines_url, timeout=10).json()
+            oi_url = (
+                f"https://fapi.binance.com/"
+                f"fapi/v1/openInterest?symbol={symbol}"
+            )
 
-            closes = [float(k[4]) for k in klines]
+            oi_data = requests.get(
+                oi_url,
+                timeout=10
+            ).json()
+
+            open_interest = float(
+                oi_data["openInterest"]
+            )
+
+            # ==================================================
+            # 🔹 FUNDING RATE
+            # ==================================================
+
+            funding_url = (
+                f"https://fapi.binance.com/"
+                f"fapi/v1/premiumIndex?symbol={symbol}"
+            )
+
+            funding_data = requests.get(
+                funding_url,
+                timeout=10
+            ).json()
+
+            funding_rate = float(
+                funding_data["lastFundingRate"]
+            )
+
+            # ==================================================
+            # 🔹 KLINES
+            # ==================================================
+
+            klines_url = (
+                f"https://api.binance.com/"
+                f"api/v3/klines?"
+                f"symbol={symbol}"
+                f"&interval=4h"
+                f"&limit=100"
+            )
+
+            klines = requests.get(
+                klines_url,
+                timeout=10
+            ).json()
+
+            closes = [
+                float(k[4])
+                for k in klines
+            ]
+
+            # ==================================================
+            # 🔹 SAVE DATA
+            # ==================================================
 
             self.last_data = {
                 "open_interest": open_interest,
@@ -36,66 +87,64 @@ class MarketPosition:
             return self.last_data
 
         except Exception as e:
-            print(f"❌ Error obteniendo market data: {e}")
+
+            print(
+                f"❌ Error obteniendo market data: {e}"
+            )
+
             return None
 
 
-# 🔹 EMA MANUAL
-def calculate_ema(prices, period):
+# ==================================================
+# 🔥 EMA CALCULATION
+# ==================================================
+
+def calculate_ema(closes, period):
+
+    multiplier = 2 / (period + 1)
+
+    ema = closes[0]
+
+    for price in closes[1:]:
+
+        ema = (
+            (price - ema)
+            * multiplier
+        ) + ema
+
+    return ema
+
+
+# ==================================================
+# 🔥 EMA SIGNAL
+# ==================================================
+
+def get_ema_signal(closes):
+
     try:
-        if len(prices) < period:
-            return []
 
-        ema_values = []
+        ema_fast = calculate_ema(
+            closes,
+            9
+        )
 
-        sma = sum(prices[:period]) / period
-        ema_values.append(sma)
+        ema_slow = calculate_ema(
+            closes,
+            21
+        )
 
-        multiplier = 2 / (period + 1)
-
-        for price in prices[period:]:
-            ema = (price - ema_values[-1]) * multiplier + ema_values[-1]
-            ema_values.append(ema)
-
-        return ema_values
-
-    except Exception as e:
-        print(f"❌ Error calculando EMA: {e}")
-        return []
-
-
-# 🔹 DETECCIÓN DE CRUCE EMA
-def get_ema_signal(prices):
-    try:
-        ema_fast = calculate_ema(prices, 9)
-        ema_slow = calculate_ema(prices, 21)
-
-        if len(ema_fast) < 2 or len(ema_slow) < 2:
-            return "NEUTRAL"
-
-        fast_now = ema_fast[-1]
-        fast_prev = ema_fast[-2]
-
-        slow_now = ema_slow[-1]
-        slow_prev = ema_slow[-2]
-
-        # 🔥 Golden Cross
-        if fast_prev < slow_prev and fast_now > slow_now:
-            return "LONG"
-
-        # 🔥 Death Cross
-        elif fast_prev > slow_prev and fast_now < slow_now:
-            return "SHORT"
-
-        # 🔹 Tendencia actual
-        elif fast_now > slow_now:
+        if ema_fast > ema_slow:
             return "BULLISH"
 
-        elif fast_now < slow_now:
+        elif ema_fast < ema_slow:
             return "BEARISH"
 
         return "NEUTRAL"
 
     except Exception as e:
-        print(f"❌ Error obteniendo señal EMA: {e}")
+
+        print(
+            f"❌ Error EMA signal: {e}"
+        )
+
         return "NEUTRAL"
