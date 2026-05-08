@@ -34,25 +34,33 @@ def calculate_rsi(closes, period=14):
         return None
 
 
-# 🔥 LÓGICA RSI + EMA
+# 🔥 NUEVA LÓGICA MÁS FLEXIBLE
 def get_signal(rsi, ema_signal):
+
     if rsi is None:
         return None
 
-    # 🔥 LONG FUERTE
-    if rsi < 30 and ema_signal in ["LONG", "BULLISH"]:
+    bullish_signals = ["LONG", "BULLISH"]
+    bearish_signals = ["SHORT", "BEARISH"]
+
+    # ==================================================
+    # BUY SIGNALS
+    # ==================================================
+
+    if rsi <= 35 and ema_signal in bullish_signals:
         return "BUY_STRONG"
 
-    # 🔹 LONG DÉBIL
-    elif rsi < 40 and ema_signal == "BULLISH":
+    elif rsi <= 45 and ema_signal in bullish_signals:
         return "BUY_WEAK"
 
-    # 🔥 SHORT FUERTE
-    elif rsi > 70 and ema_signal in ["SHORT", "BEARISH"]:
+    # ==================================================
+    # SELL SIGNALS
+    # ==================================================
+
+    elif rsi >= 65 and ema_signal in bearish_signals:
         return "SELL_STRONG"
 
-    # 🔹 SHORT DÉBIL
-    elif rsi > 60 and ema_signal == "BEARISH":
+    elif rsi >= 55 and ema_signal in bearish_signals:
         return "SELL_WEAK"
 
     return None
@@ -61,6 +69,7 @@ def get_signal(rsi, ema_signal):
 # 🔥 DETECCIÓN DE MOVIMIENTOS FUERTES
 def detect_movement(klines):
     try:
+
         last = klines[-1]
 
         open_price = float(last[1])
@@ -68,10 +77,13 @@ def detect_movement(klines):
 
         volume = float(last[5])
 
-        change_pct = ((close_price - open_price) / open_price) * 100
+        change_pct = (
+            (close_price - open_price)
+            / open_price
+        ) * 100
 
         # 🔥 DUMP
-        if change_pct <= -3:
+        if change_pct <= -2:
             return {
                 "type": "DUMP",
                 "change_pct": round(change_pct, 2),
@@ -79,7 +91,7 @@ def detect_movement(klines):
             }
 
         # 🔥 PUMP
-        elif change_pct >= 3:
+        elif change_pct >= 2:
             return {
                 "type": "PUMP",
                 "change_pct": round(change_pct, 2),
@@ -95,16 +107,19 @@ def detect_movement(klines):
 
 # 🔹 PROCESAMIENTO PRINCIPAL
 def process_market_data(symbol, closes, klines):
+
     try:
         rsi = calculate_rsi(closes)
 
         ema_signal = get_ema_signal(closes)
 
-        signal = get_signal(rsi, ema_signal)
+        signal = get_signal(
+            rsi,
+            ema_signal
+        )
 
         movement = detect_movement(klines)
 
-        # 🔥 CORRECCIÓN DEL ERROR
         rsi_value = round(rsi, 2) if rsi else 0
 
         # 🔹 LOG PRINCIPAL
@@ -124,7 +139,11 @@ def process_market_data(symbol, closes, klines):
 
         # 🔹 GUARDAR SEÑAL
         if signal:
-            save_signal(symbol, signal, rsi)
+            save_signal(
+                symbol,
+                signal,
+                rsi
+            )
 
         return {
             "signal": signal,

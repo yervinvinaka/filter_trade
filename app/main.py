@@ -7,6 +7,10 @@ from app.services.strategy_service import (
     process_market_data
 )
 
+from app.services.volatility_service import (
+    analyze_volatility
+)
+
 from app.alerts.alert_service import send_alert
 
 
@@ -31,6 +35,9 @@ symbols = [
 # 🔥 Evitar spam
 last_signals = {}
 
+# 🔥 Evitar spam volatilidad
+last_volatility_alert = {}
+
 
 def run_bot():
     logging.info("🚀 Bot iniciado...")
@@ -53,7 +60,7 @@ def run_bot():
                 closes = data["closes"]
                 klines = data["klines"]
 
-                # 🔥 Procesar estrategia
+                # 🔥 Procesar estrategia principal
                 result = process_market_data(
                     symbol,
                     closes,
@@ -68,7 +75,13 @@ def run_bot():
                 ema_signal = result["ema_signal"]
                 movement = result["movement"]
 
-                # 🔥 CORRECCIÓN DEL ERROR
+                # 🔥 Volatility Engine
+                volatility = analyze_volatility(
+                    klines,
+                    oi
+                )
+
+                # 🔹 RSI seguro
                 rsi_value = round(rsi, 2) if rsi else 0
 
                 # 🔹 LOG GENERAL
@@ -80,18 +93,19 @@ def run_bot():
                     f"OI: {oi:.2f}"
                 )
 
-                # 🔥 EVITAR SPAM
+                # ==================================================
+                # 🔥 ALERTAS DE SIGNAL
+                # ==================================================
+
                 if signal and last_signals.get(symbol) != signal:
 
                     last_signals[symbol] = signal
 
-                    # 🔹 Emojis dinámicos
                     emoji = "🟢"
 
                     if "SELL" in signal:
                         emoji = "🔴"
 
-                    # 🔥 Mensaje principal
                     message = (
                         f"{emoji} SIGNAL ALERT\n\n"
                         f"📊 Symbol: {symbol}\n"
@@ -102,7 +116,7 @@ def run_bot():
                         f"📦 OI: {oi:.2f}"
                     )
 
-                    # 🔥 Movimiento fuerte
+                    # 🔥 Movimiento detectado
                     if movement:
                         message += (
                             f"\n\n"
@@ -110,15 +124,54 @@ def run_bot():
                             f"⚡ Change: {movement['change_pct']}%"
                         )
 
-                    logging.info(f"📩 Enviando alerta: {symbol}")
+                    logging.info(f"📩 Enviando SIGNAL ALERT: {symbol}")
 
                     send_alert(message)
 
                 else:
                     logging.info(f"⏸️ Sin nueva señal en {symbol}")
 
+                # ==================================================
+                # 🔥 ALERTAS DE VOLATILIDAD
+                # ==================================================
+
+                if (
+                    volatility
+                    and volatility["score"] >= 60
+                ):
+
+                    volatility_key = (
+                        f"{symbol}_{volatility['event']}"
+                    )
+
+                    # 🔥 Evitar spam
+                    if (
+                        last_volatility_alert.get(symbol)
+                        != volatility_key
+                    ):
+
+                        last_volatility_alert[symbol] = volatility_key
+
+                        volatility_msg = (
+                            f"⚠️ HIGH VOLATILITY DETECTED\n\n"
+                            f"📊 Symbol: {symbol}\n"
+                            f"🔥 Event: {volatility['event']}\n"
+                            f"⚡ Strength: {volatility['strength']}\n"
+                            f"📈 Price Change: {volatility['change_pct']}%\n"
+                            f"📦 Volume Change: {volatility['volume_change']}%\n"
+                            f"🎯 Score: {volatility['score']}"
+                        )
+
+                        logging.info(
+                            f"🚨 Volatility alert: {symbol}"
+                        )
+
+                        send_alert(volatility_msg)
+
             except Exception as e:
-                logging.error(f"❌ Error procesando {symbol}: {e}")
+                logging.error(
+                    f"❌ Error procesando {symbol}: {e}"
+                )
 
         # 🔹 Espera entre ciclos
         time.sleep(60)
