@@ -29,6 +29,17 @@ class MarketPosition:
                 timeout=10
             ).json()
 
+            # 🔥 VALIDAR RESPUESTA
+
+            if "openInterest" not in oi_data:
+
+                print(
+                    f"⚠️ Binance OI error: "
+                    f"{oi_data}"
+                )
+
+                return None
+
             open_interest = float(
                 oi_data["openInterest"]
             )
@@ -46,6 +57,17 @@ class MarketPosition:
                 funding_url,
                 timeout=10
             ).json()
+
+            # 🔥 VALIDAR RESPUESTA
+
+            if "lastFundingRate" not in funding_data:
+
+                print(
+                    f"⚠️ Binance funding error: "
+                    f"{funding_data}"
+                )
+
+                return None
 
             funding_rate = float(
                 funding_data["lastFundingRate"]
