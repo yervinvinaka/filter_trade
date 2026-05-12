@@ -24,6 +24,11 @@ from app.services.interpreter_service import (
     interpret_signal
 )
 
+# 🔥 NUEVO
+from app.services.multi_timeframe_service import (
+    analyze_multi_timeframe
+)
+
 from app.alerts.alert_service import send_alert
 
 
@@ -31,7 +36,7 @@ print("🔥 BOT ARRANCANDO EN RAILWAY")
 
 
 # ==================================================
-# 🔹 CONFIG LOGS
+# 🔹 LOGS
 # ==================================================
 
 logging.basicConfig(
@@ -60,7 +65,6 @@ last_signals = {}
 
 last_volatility_alert = {}
 
-# 🔥 HEARTBEAT
 last_heartbeat = 0
 
 
@@ -104,7 +108,7 @@ def run_bot():
                     klines = data["klines"]
 
                     # ==================================================
-                    # 🔹 STRATEGY ENGINE
+                    # 🔥 STRATEGY
                     # ==================================================
 
                     result = process_market_data(
@@ -125,7 +129,15 @@ def run_bot():
                     movement = result["movement"]
 
                     # ==================================================
-                    # 🔥 VOLATILITY ENGINE
+                    # 🔥 MULTI TIMEFRAME
+                    # ==================================================
+
+                    mtf = analyze_multi_timeframe(
+                        symbol
+                    )
+
+                    # ==================================================
+                    # 🔥 VOLATILITY
                     # ==================================================
 
                     volatility = analyze_volatility(
@@ -134,7 +146,7 @@ def run_bot():
                     )
 
                     # ==================================================
-                    # 🔥 RISK ENGINE
+                    # 🔥 ATR + RISK
                     # ==================================================
 
                     current_price = float(
@@ -152,7 +164,7 @@ def run_bot():
                     )
 
                     # ==================================================
-                    # 🔥 CONFIDENCE ENGINE
+                    # 🔥 CONFIDENCE
                     # ==================================================
 
                     confidence = None
@@ -170,10 +182,6 @@ def run_bot():
                             movement
                         )
 
-                        # ==================================================
-                        # 🔥 INTERPRETER
-                        # ==================================================
-
                         interpretation = interpret_signal(
                             signal,
                             rsi,
@@ -187,7 +195,11 @@ def run_bot():
                     # 🔹 LOGS
                     # ==================================================
 
-                    rsi_value = round(rsi, 2) if rsi else 0
+                    rsi_value = (
+                        round(rsi, 2)
+                        if rsi
+                        else 0
+                    )
 
                     logging.info(
                         f"{symbol} | "
@@ -198,7 +210,7 @@ def run_bot():
                     )
 
                     # ==================================================
-                    # 🔥 SIGNAL ALERTS
+                    # 🔥 SIGNAL ALERT
                     # ==================================================
 
                     if (
@@ -208,10 +220,6 @@ def run_bot():
                     ):
 
                         last_signals[symbol] = signal
-
-                        # ==================================================
-                        # 🔥 DIRECTION EMOJI
-                        # ==================================================
 
                         emoji = "🟢"
 
@@ -224,13 +232,42 @@ def run_bot():
 
                         message = (
                             f"{emoji} SIGNAL ALERT\n\n"
+
                             f"📊 Symbol: {symbol}\n"
+
                             f"📈 Signal: {signal}\n"
+
                             f"📉 RSI: {rsi_value}\n"
+
                             f"📊 EMA Trend: {ema_signal}\n"
+
                             f"💰 Funding: {funding:.6f}\n"
+
                             f"📦 OI: {oi:.2f}"
                         )
+
+                        # ==================================================
+                        # 🔥 MULTI TIMEFRAME INFO
+                        # ==================================================
+
+                        if mtf:
+
+                            message += (
+                                f"\n\n"
+                                f"🧠 Multi-Timeframe\n\n"
+
+                                f"⏱️ 1H: "
+                                f"{mtf['1h']}\n"
+
+                                f"⏱️ 4H: "
+                                f"{mtf['4h']}\n"
+
+                                f"⏱️ 1D: "
+                                f"{mtf['1d']}\n\n"
+
+                                f"🎯 Alignment: "
+                                f"{mtf['alignment']}"
+                            )
 
                         # ==================================================
                         # 🔥 TRADE LEVELS
@@ -257,7 +294,7 @@ def run_bot():
                             )
 
                         # ==================================================
-                        # 🔥 CONFIDENCE SCORE
+                        # 🔥 CONFIDENCE
                         # ==================================================
 
                         if confidence:
@@ -286,7 +323,7 @@ def run_bot():
                             )
 
                         # ==================================================
-                        # 🔥 MOVEMENT DETECTION
+                        # 🔥 MOVEMENT
                         # ==================================================
 
                         if movement:
@@ -302,7 +339,7 @@ def run_bot():
                             )
 
                         # ==================================================
-                        # 🔥 MARKET INTERPRETATION
+                        # 🔥 INTERPRETATION
                         # ==================================================
 
                         if interpretation:
