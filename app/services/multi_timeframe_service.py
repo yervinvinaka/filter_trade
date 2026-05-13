@@ -1,7 +1,8 @@
 import requests
 
 from app.services.market_service import (
-    calculate_ema
+    calculate_ema,
+    calculate_rsi
 )
 
 
@@ -24,10 +25,15 @@ def get_tf_klines(
             f"&limit={limit}"
         )
 
-        data = requests.get(
+        response = requests.get(
             url,
             timeout=10
-        ).json()
+        )
+
+        data = response.json()
+
+        if not isinstance(data, list):
+            return []
 
         closes = [
             float(k[4])
@@ -54,7 +60,7 @@ def detect_trend(closes):
 
     try:
 
-        if not closes:
+        if len(closes) < 21:
             return "NEUTRAL"
 
         ema_fast = calculate_ema(
@@ -85,6 +91,43 @@ def detect_trend(closes):
 
 
 # ==================================================
+# 🔥 RSI ENTRY ENGINE
+# ==================================================
+
+def get_entry_signal(closes):
+
+    try:
+
+        if len(closes) < 20:
+            return None
+
+        rsi = calculate_rsi(
+            closes
+        )
+
+        if rsi is None:
+            return None
+
+        # 🔥 MÁS FLEXIBLE
+
+        if rsi <= 38:
+            return "BUY"
+
+        elif rsi >= 58:
+            return "SELL"
+
+        return None
+
+    except Exception as e:
+
+        print(
+            f"❌ Error entry signal: {e}"
+        )
+
+        return None
+
+
+# ==================================================
 # 🔥 MULTI TIMEFRAME ANALYSIS
 # ==================================================
 
@@ -93,7 +136,7 @@ def analyze_multi_timeframe(symbol):
     try:
 
         # ==================================================
-        # 🔹 1H
+        # 🔹 1H = ENTRIES
         # ==================================================
 
         closes_1h = get_tf_klines(
@@ -105,8 +148,12 @@ def analyze_multi_timeframe(symbol):
             closes_1h
         )
 
+        entry_signal = get_entry_signal(
+            closes_1h
+        )
+
         # ==================================================
-        # 🔹 4H
+        # 🔹 4H = MAIN TREND
         # ==================================================
 
         closes_4h = get_tf_klines(
@@ -119,7 +166,7 @@ def analyze_multi_timeframe(symbol):
         )
 
         # ==================================================
-        # 🔹 1D
+        # 🔹 1D = MACRO
         # ==================================================
 
         closes_1d = get_tf_klines(
@@ -132,11 +179,13 @@ def analyze_multi_timeframe(symbol):
         )
 
         # ==================================================
-        # 🔥 ALIGNMENT SCORE
+        # 🔥 ALIGNMENT
         # ==================================================
 
-        bullish_count = 0
-        bearish_count = 0
+        alignment = "MIXED"
+
+        bullish = 0
+        bearish = 0
 
         trends = [
             trend_1h,
@@ -147,27 +196,26 @@ def analyze_multi_timeframe(symbol):
         for trend in trends:
 
             if trend == "BULLISH":
-                bullish_count += 1
+                bullish += 1
 
             elif trend == "BEARISH":
-                bearish_count += 1
+                bearish += 1
 
-        alignment = "MIXED"
-
-        if bullish_count >= 2:
+        if bullish >= 2:
             alignment = "BULLISH"
 
-        elif bearish_count >= 2:
+        elif bearish >= 2:
             alignment = "BEARISH"
 
         # ==================================================
-        # 🔥 RETURN
+        # 🔥 FINAL
         # ==================================================
 
         return {
             "1h": trend_1h,
             "4h": trend_4h,
             "1d": trend_1d,
+            "entry_signal": entry_signal,
             "alignment": alignment
         }
 

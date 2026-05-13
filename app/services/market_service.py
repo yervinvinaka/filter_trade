@@ -11,84 +11,137 @@ class MarketPosition:
     # 🔥 FETCH MARKET DATA
     # ==================================================
 
-    def fetch_data(self, symbol="BTCUSDT"):
+    def fetch_data(
+        self,
+        symbol="BTCUSDT"
+    ):
 
         try:
+
+            # ==================================================
+            # 🔹 DEFAULT VALUES
+            # ==================================================
+
+            open_interest = 0
+            funding_rate = 0
 
             # ==================================================
             # 🔹 OPEN INTEREST
             # ==================================================
 
-            oi_url = (
-                f"https://fapi.binance.com/"
-                f"fapi/v1/openInterest?symbol={symbol}"
-            )
+            try:
 
-            oi_data = requests.get(
-                oi_url,
-                timeout=10
-            ).json()
-
-            # 🔥 VALIDAR RESPUESTA
-
-            if "openInterest" not in oi_data:
-
-                print(
-                    f"⚠️ Binance OI error: "
-                    f"{oi_data}"
+                oi_url = (
+                    "https://fapi.binance.com/"
+                    "fapi/v1/openInterest"
+                    f"?symbol={symbol}"
                 )
 
-                return None
+                oi_response = requests.get(
+                    oi_url,
+                    timeout=10
+                )
 
-            open_interest = float(
-                oi_data["openInterest"]
-            )
+                oi_data = oi_response.json()
+
+                if (
+                    isinstance(oi_data, dict)
+                    and "openInterest" in oi_data
+                ):
+
+                    open_interest = float(
+                        oi_data["openInterest"]
+                    )
+
+                else:
+
+                    print(
+                        f"⚠️ Binance OI error: "
+                        f"{oi_data}"
+                    )
+
+            except Exception as e:
+
+                print(
+                    f"⚠️ OI fetch failed: {e}"
+                )
 
             # ==================================================
             # 🔹 FUNDING RATE
             # ==================================================
 
-            funding_url = (
-                f"https://fapi.binance.com/"
-                f"fapi/v1/premiumIndex?symbol={symbol}"
-            )
+            try:
 
-            funding_data = requests.get(
-                funding_url,
-                timeout=10
-            ).json()
-
-            # 🔥 VALIDAR RESPUESTA
-
-            if "lastFundingRate" not in funding_data:
-
-                print(
-                    f"⚠️ Binance funding error: "
-                    f"{funding_data}"
+                funding_url = (
+                    "https://fapi.binance.com/"
+                    "fapi/v1/premiumIndex"
+                    f"?symbol={symbol}"
                 )
 
-                return None
+                funding_response = requests.get(
+                    funding_url,
+                    timeout=10
+                )
 
-            funding_rate = float(
-                funding_data["lastFundingRate"]
-            )
+                funding_data = (
+                    funding_response.json()
+                )
+
+                if (
+                    isinstance(funding_data, dict)
+                    and "lastFundingRate"
+                    in funding_data
+                ):
+
+                    funding_rate = float(
+                        funding_data[
+                            "lastFundingRate"
+                        ]
+                    )
+
+                else:
+
+                    print(
+                        f"⚠️ Binance Funding error: "
+                        f"{funding_data}"
+                    )
+
+            except Exception as e:
+
+                print(
+                    f"⚠️ Funding fetch failed: {e}"
+                )
 
             # ==================================================
-            # 🔹 KLINES
+            # 🔹 KLINES 4H
             # ==================================================
 
             klines_url = (
-                f"https://api.binance.com/"
-                f"api/v3/klines?"
-                f"symbol={symbol}"
-                f"&interval=4h"
-                f"&limit=100"
+                "https://api.binance.com/"
+                "api/v3/klines"
+                f"?symbol={symbol}"
+                "&interval=4h"
+                "&limit=100"
             )
 
-            klines = requests.get(
+            klines_response = requests.get(
                 klines_url,
                 timeout=10
-            ).json()
+            )
+
+            klines = klines_response.json()
+
+            if not isinstance(
+                klines,
+                list
+            ):
+
+                print(
+                    f"❌ Invalid klines: "
+                    f"{klines}"
+                )
+
+                return None
 
             closes = [
                 float(k[4])
@@ -96,13 +149,17 @@ class MarketPosition:
             ]
 
             # ==================================================
-            # 🔹 SAVE DATA
+            # 🔥 FINAL DATA
             # ==================================================
 
             self.last_data = {
+
                 "open_interest": open_interest,
+
                 "funding_rate": funding_rate,
+
                 "closes": closes,
+
                 "klines": klines
             }
 
@@ -111,31 +168,92 @@ class MarketPosition:
         except Exception as e:
 
             print(
-                f"❌ Error obteniendo market data: {e}"
+                f"❌ Error obteniendo "
+                f"market data: {e}"
             )
 
             return None
 
 
 # ==================================================
-# 🔥 EMA CALCULATION
+# 🔥 EMA
 # ==================================================
 
-def calculate_ema(closes, period):
+def calculate_ema(
+    closes,
+    period
+):
 
-    multiplier = 2 / (period + 1)
+    if len(closes) < period:
+        return None
+
+    multiplier = (
+        2 / (period + 1)
+    )
 
     ema = closes[0]
 
-    for price in closes[1:]:
+    for close in closes[1:]:
 
         ema = (
-            (price - ema)
+            (close - ema)
             * multiplier
         ) + ema
 
     return ema
 
+
+# ==================================================
+# 🔥 RSI
+# ==================================================
+
+def calculate_rsi(
+    closes,
+    period=14
+):
+
+    if len(closes) < period + 1:
+        return None
+
+    gains = []
+    losses = []
+
+    for i in range(
+        1,
+        period + 1
+    ):
+
+        delta = (
+            closes[i]
+            - closes[i - 1]
+        )
+
+        if delta >= 0:
+            gains.append(delta)
+        else:
+            losses.append(abs(delta))
+
+    avg_gain = (
+        sum(gains) / period
+        if gains else 0
+    )
+
+    avg_loss = (
+        sum(losses) / period
+        if losses else 0
+    )
+
+    if avg_loss == 0:
+        return 100
+
+    rs = avg_gain / avg_loss
+
+    rsi = (
+        100
+        - (100 / (1 + rs))
+    )
+
+    return round(rsi, 2)
 
 # ==================================================
 # 🔥 EMA SIGNAL
@@ -144,6 +262,9 @@ def calculate_ema(closes, period):
 def get_ema_signal(closes):
 
     try:
+
+        if len(closes) < 21:
+            return "NEUTRAL"
 
         ema_fast = calculate_ema(
             closes,
@@ -166,7 +287,7 @@ def get_ema_signal(closes):
     except Exception as e:
 
         print(
-            f"❌ Error EMA signal: {e}"
+            f"❌ EMA signal error: {e}"
         )
 
         return "NEUTRAL"
