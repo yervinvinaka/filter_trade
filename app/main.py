@@ -17,16 +17,26 @@ from app.services.risk_service import (
 )
 
 from app.services.confidence_service import (
-    calculate_confidence
+    calculate_confidence,
+    get_setup_type
 )
 
 from app.services.interpreter_service import (
     interpret_signal
 )
 
-# 🔥 NUEVO
 from app.services.multi_timeframe_service import (
     analyze_multi_timeframe
+)
+
+from app.services.trade_tracker_service import (
+    save_trade,
+    check_open_trades,
+    close_trade
+)
+
+from app.services.confirmation_service import (
+    confirm_trade
 )
 
 from app.alerts.alert_service import send_alert
@@ -108,13 +118,27 @@ def run_bot():
                     klines = data["klines"]
 
                     # ==================================================
+                    # 🔥 MULTI TIMEFRAME
+                    # ==================================================
+
+                    mtf = analyze_multi_timeframe(
+                        symbol
+                    )
+
+                    alignment = None
+
+                    if mtf:
+                        alignment = mtf["alignment"]
+
+                    # ==================================================
                     # 🔥 STRATEGY
                     # ==================================================
 
                     result = process_market_data(
                         symbol,
                         closes,
-                        klines
+                        klines,
+                        mtf
                     )
 
                     if not result:
@@ -129,14 +153,6 @@ def run_bot():
                     movement = result["movement"]
 
                     # ==================================================
-                    # 🔥 MULTI TIMEFRAME
-                    # ==================================================
-
-                    mtf = analyze_multi_timeframe(
-                        symbol
-                    )
-
-                    # ==================================================
                     # 🔥 VOLATILITY
                     # ==================================================
 
@@ -144,6 +160,32 @@ def run_bot():
                         klines,
                         oi
                     )
+
+                    # ==================================================
+                    # 🔥 CONFIRMATION ENGINE
+                    # ==================================================
+
+                    confirmation = confirm_trade(
+                        closes,
+                        klines
+                    )
+
+                    # ==================================================
+                    # 🔥 INVALID SIGNAL FILTER
+                    # ==================================================
+
+                    if (
+                        signal
+                        and not confirmation["valid"]
+                    ):
+
+                        logging.info(
+                            f"⛔ Señal descartada "
+                            f"por confirmation engine "
+                            f"en {symbol}"
+                        )
+
+                        signal = None
 
                     # ==================================================
                     # 🔥 ATR + RISK
@@ -171,6 +213,8 @@ def run_bot():
 
                     interpretation = None
 
+                    setup_type = None
+
                     if signal:
 
                         confidence = calculate_confidence(
@@ -178,6 +222,7 @@ def run_bot():
                             rsi,
                             ema_signal,
                             funding,
+                            alignment,
                             volatility,
                             movement
                         )
@@ -189,6 +234,12 @@ def run_bot():
                             confidence,
                             movement,
                             volatility
+                        )
+
+                        setup_type = get_setup_type(
+                            signal,
+                            ema_signal,
+                            alignment
                         )
 
                     # ==================================================
@@ -206,7 +257,9 @@ def run_bot():
                         f"RSI: {rsi_value} | "
                         f"EMA: {ema_signal} | "
                         f"Funding: {funding:.6f} | "
-                        f"OI: {oi:.2f}"
+                        f"OI: {oi:.2f} | "
+                        f"Confirmations: "
+                        f"{confirmation['score']}/3"
                     )
 
                     # ==================================================
@@ -227,6 +280,21 @@ def run_bot():
                             emoji = "🔴"
 
                         # ==================================================
+                        # 🔥 SETUP EMOJI
+                        # ==================================================
+
+                        setup_emoji = "⚪"
+
+                        if setup_type == "TREND_CONTINUATION":
+                            setup_emoji = "🟢"
+
+                        elif setup_type == "COUNTER_TREND":
+                            setup_emoji = "🟠"
+
+                        elif setup_type == "MIXED_SETUP":
+                            setup_emoji = "🟡"
+
+                        # ==================================================
                         # 🔥 BASE MESSAGE
                         # ==================================================
 
@@ -244,6 +312,18 @@ def run_bot():
                             f"💰 Funding: {funding:.6f}\n"
 
                             f"📦 OI: {oi:.2f}"
+                        )
+
+                        # ==================================================
+                        # 🔥 CONFIRMATION SCORE
+                        # ==================================================
+
+                        message += (
+                            f"\n\n"
+                            f"✅ Confirmation Engine\n\n"
+
+                            f"🎯 Confirmations: "
+                            f"{confirmation['score']}/3"
                         )
 
                         # ==================================================
@@ -270,6 +350,19 @@ def run_bot():
                             )
 
                         # ==================================================
+                        # 🔥 SETUP TYPE
+                        # ==================================================
+
+                        if setup_type:
+
+                            message += (
+                                f"\n\n"
+                                f"{setup_emoji} Setup Type\n\n"
+
+                                f"{setup_type}"
+                            )
+
+                        # ==================================================
                         # 🔥 TRADE LEVELS
                         # ==================================================
 
@@ -291,6 +384,18 @@ def run_bot():
 
                                 f"📊 ATR: "
                                 f"{trade_levels['atr']}"
+                            )
+
+                            # ==================================================
+                            # 🔥 SAVE TRADE
+                            # ==================================================
+
+                            save_trade(
+                                symbol,
+                                signal,
+                                trade_levels["entry"],
+                                trade_levels["stop_loss"],
+                                trade_levels["take_profit"]
                             )
 
                         # ==================================================
@@ -315,7 +420,9 @@ def run_bot():
 
                             message += (
                                 f"\n\n"
-                                f"{confidence_emoji} Confidence: "
+                                f"{confidence_emoji} Confidence\n\n"
+
+                                f"🎯 Score: "
                                 f"{confidence['score']}%\n"
 
                                 f"📊 Strength: "
@@ -351,6 +458,40 @@ def run_bot():
                             )
 
                         # ==================================================
+                        # 🔥 WARNING COUNTER TREND
+                        # ==================================================
+
+                        if (
+                            setup_type
+                            == "COUNTER_TREND"
+                        ):
+
+                            message += (
+                                f"\n\n"
+                                f"⚠️ WARNING\n\n"
+
+                                f"This setup is "
+                                f"against the main trend.\n"
+
+                                f"Higher risk of failure."
+                            )
+
+                        # ==================================================
+                        # 🔥 PREMIUM SETUP
+                        # ==================================================
+
+                        if (
+                            confidence
+                            and confidence["score"] >= 80
+                        ):
+
+                            message += (
+                                f"\n\n"
+                                f"🔥 PREMIUM SETUP "
+                                f"DETECTED"
+                            )
+
+                        # ==================================================
                         # 🔥 SEND ALERT
                         # ==================================================
 
@@ -364,7 +505,7 @@ def run_bot():
                     else:
 
                         logging.info(
-                            f"⏸️ Sin nueva señal en "
+                            f"⏸️ Sin nueva señal válida en "
                             f"{symbol}"
                         )
 
@@ -428,6 +569,112 @@ def run_bot():
                     logging.error(
                         f"❌ Error procesando "
                         f"{symbol}: {e}"
+                    )
+
+            # ==================================================
+            # 🔥 CHECK OPEN TRADES
+            # ==================================================
+
+            open_trades = check_open_trades()
+
+            for trade in open_trades:
+
+                try:
+
+                    if trade["status"] != "OPEN":
+                        continue
+
+                    trade_symbol = trade["symbol"]
+
+                    trade_data = market.fetch_data(
+                        trade_symbol
+                    )
+
+                    if not trade_data:
+                        continue
+
+                    current_price = float(
+                        trade_data["klines"][-1][4]
+                    )
+
+                    signal_type = trade["signal"]
+
+                    tp = trade["take_profit"]
+
+                    sl = trade["stop_loss"]
+
+                    # ==========================================
+                    # BUY
+                    # ==========================================
+
+                    if "BUY" in signal_type:
+
+                        if current_price >= tp:
+
+                            close_trade(
+                                trade,
+                                "WIN"
+                            )
+
+                            send_alert(
+                                f"✅ TAKE PROFIT HIT\n\n"
+                                f"📊 {trade_symbol}\n"
+                                f"💰 TP alcanzado\n"
+                                f"📈 Resultado: WIN"
+                            )
+
+                        elif current_price <= sl:
+
+                            close_trade(
+                                trade,
+                                "LOSS"
+                            )
+
+                            send_alert(
+                                f"❌ STOP LOSS HIT\n\n"
+                                f"📊 {trade_symbol}\n"
+                                f"🛑 SL alcanzado\n"
+                                f"📉 Resultado: LOSS"
+                            )
+
+                    # ==========================================
+                    # SELL
+                    # ==========================================
+
+                    elif "SELL" in signal_type:
+
+                        if current_price <= tp:
+
+                            close_trade(
+                                trade,
+                                "WIN"
+                            )
+
+                            send_alert(
+                                f"✅ TAKE PROFIT HIT\n\n"
+                                f"📊 {trade_symbol}\n"
+                                f"💰 TP alcanzado\n"
+                                f"📈 Resultado: WIN"
+                            )
+
+                        elif current_price >= sl:
+
+                            close_trade(
+                                trade,
+                                "LOSS"
+                            )
+
+                            send_alert(
+                                f"❌ STOP LOSS HIT\n\n"
+                                f"📊 {trade_symbol}\n"
+                                f"🛑 SL alcanzado\n"
+                                f"📉 Resultado: LOSS"
+                            )
+
+                except Exception as e:
+
+                    logging.error(
+                        f"❌ Error checking trade: {e}"
                     )
 
             # ==================================================
